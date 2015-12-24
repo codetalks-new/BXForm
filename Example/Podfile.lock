@@ -1,0 +1,26 @@
+PODS:
+  - BXForm (0.1.0):
+    - BXiOSUtils
+    - BXModel
+    - PinAutoLayout
+  - BXiOSUtils (0.1.1)
+  - BXModel (0.1.0):
+    - SwiftyJSON
+  - PinAutoLayout (1.0.2)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - BXForm (from `../`)
+
+EXTERNAL SOURCES:
+  BXForm:
+    :path: ../
+
+SPEC CHECKSUMS:
+  BXForm: 0b2b8fcfe4a7feb1ec22215d80c94255162adcaa
+  BXiOSUtils: 2af9834ab6465670cd54a660d7d9f27f626c0754
+  BXModel: cafda844bd7cd91f11767a57df17eec502b4dfa9
+  PinAutoLayout: 8eb5d5b60a4710980b966f36f51bea851c257972
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
