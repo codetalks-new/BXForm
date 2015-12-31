@@ -74,9 +74,9 @@ public class BasePickerController: UIViewController {
   }
   
   func installConstaints(){
+    confirmBar.setContentCompressionResistancePriority(900, forAxis: .Vertical)
     pickerView.pinHorizontal(0)
     pickerView.clipsToBounds = true
-    pickerView.pinAboveSibling(confirmBar, margin: 0)
     confirmBar.pinHeight(44)
     confirmBar.pinHorizontal(0)
     
@@ -85,10 +85,12 @@ public class BasePickerController: UIViewController {
     
     if confirmBarOnTop{
       pinTopLayoutGuide(confirmBar)
+      pickerView.pinBelowSibling(confirmBar, margin: 0)
       pinBottomLayoutGuide(pickerView)
       dividerView.pinBelowSibling(confirmBar, margin: 0)
     }else{
       pinBottomLayoutGuide(confirmBar)
+      pickerView.pinAboveSibling(confirmBar, margin: 0)
       pinTopLayoutGuide(pickerView)
       dividerView.pinAboveSibling(confirmBar, margin: 0)
     }
@@ -106,8 +108,16 @@ public class BasePickerController: UIViewController {
   override public func viewDidLoad() {
     super.viewDidLoad()
     
-    confirmBar.cancelButton.addTarget(self, action: "dismiss", forControlEvents: .TouchUpInside)
+    confirmBar.cancelButton.addTarget(self, action: "onCancelButtonPressed:", forControlEvents: .TouchUpInside)
     confirmBar.okButton.addTarget(self, action: "onOkButtonPressed:", forControlEvents: .TouchUpInside)
+  }
+  
+  public var onCancelHandler:( Void -> Void)?
+  
+  
+  @IBAction func onCancelButtonPressed(sender:AnyObject){
+    self.dismiss()
+    self.onCancelHandler?()
   }
   
   @IBAction func onOkButtonPressed(sender:AnyObject){

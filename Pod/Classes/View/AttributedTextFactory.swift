@@ -11,8 +11,8 @@ import BXiOSUtils
 
 extension TextFactory{
   public static func createAccentAttributedText(label:String,text:String,labelColor:UIColor=UIColor.darkTextColor()) -> NSAttributedString{
-    let labelAttr = BXTextAttribute(text: label, font: UIFont.systemFontOfSize(15), textColor: labelColor)
-    let textAttr = BXTextAttribute(text: text, font: UIFont.systemFontOfSize(15), textColor: FormColors.accentColor)
+    let labelAttr = AttributedText(text: label, font: UIFont.systemFontOfSize(15), textColor: labelColor)
+    let textAttr = AttributedText(text: text, font: UIFont.systemFontOfSize(15), textColor: FormColors.accentColor)
     return createAttributedText([labelAttr,textAttr])
     
   }

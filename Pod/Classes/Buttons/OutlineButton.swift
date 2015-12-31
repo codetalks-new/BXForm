@@ -14,6 +14,18 @@ public enum BXOutlineStyle:Int{
 }
 
 public class OutlineButton: UIButton {
+  
+  public init(style:BXOutlineStyle = .Rounded){
+    super.init(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+    outlineStyle = style
+  }
+  public var useTitleColorAsStrokeColor = true
+  
+
+  required public init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
+  
   public var outlineStyle = BXOutlineStyle.Rounded{
     didSet{
       setNeedsDisplay()
@@ -26,7 +38,7 @@ public class OutlineButton: UIButton {
     }
   }
   
-  public var lineWidth :CGFloat = 1.0 {
+  public var lineWidth :CGFloat = 0.5 {
     didSet{
       setNeedsDisplay()
     }
@@ -42,10 +54,12 @@ public class OutlineButton: UIButton {
       path = UIBezierPath(ovalInRect: pathRect)
     }
     path.lineWidth = lineWidth
-    if let color = tintColor{
-      color.setStroke()
-      path.stroke()
+    if useTitleColorAsStrokeColor{
+      currentTitleColor.setStroke()
+    }else{
+      tintColor.setStroke()
     }
+    path.stroke()
   }
   
   public override func tintColorDidChange() {

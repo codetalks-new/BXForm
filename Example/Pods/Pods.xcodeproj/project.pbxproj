@@ -31,6 +31,8 @@
 		3C097F4BA2AACA42D45229E7371899C2 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F374830710FC51905659EE73A6868C /* CircleImageView.swift */; };
 		3DC02C2AF9014A7E0D15ABBC1D574012 /* PinAutoLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 43784ED3474E797CE31ADCFF4B61E0F7 /* PinAutoLayout-dummy.m */; };
 		3E2AEC531C2AB3BD00DE202C /* AttributedTextFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2AEC521C2AB3BD00DE202C /* AttributedTextFactory.swift */; };
+		3E2AEDF11C2BCE5000DE202C /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2AEDF01C2BCE5000DE202C /* SwitchCell.swift */; };
+		3E2AEDF31C2BCEB300DE202C /* RightDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2AEDF21C2BCEB300DE202C /* RightDetailCell.swift */; };
 		3EF6DDA95EE3C423FF9FB2898B710933 /* FormMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B65414F4E1ED41AB58C5CBE97CCF6 /* FormMetrics.swift */; };
 		46DE4F1F456BD8FF4B33E63CA834893F /* RadioButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CD53A21B05B2A25F841C226B1EE0 /* RadioButtonCell.swift */; };
 		4B4AC0A6122D01321ABB482363C9A85E /* PinAutoLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8C7303B84D5C49FAC2BF6BF0F195DD /* PinAutoLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -263,6 +265,8 @@
 		3B23A860B5E363B1FCD7891664C6E296 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
 		3C5B1D01D2B7A3191591827CF2D629F2 /* Pods-BXForm_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BXForm_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3E2AEC521C2AB3BD00DE202C /* AttributedTextFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextFactory.swift; sourceTree = "<group>"; };
+		3E2AEDF01C2BCE5000DE202C /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		3E2AEDF21C2BCEB300DE202C /* RightDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailCell.swift; sourceTree = "<group>"; };
 		4279D48BB8635F0C759E72AFCDFA67CE /* QRCodeUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QRCodeUtils.swift; path = Pod/Classes/QRCodeUtils.swift; sourceTree = "<group>"; };
 		43784ED3474E797CE31ADCFF4B61E0F7 /* PinAutoLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PinAutoLayout-dummy.m"; sourceTree = "<group>"; };
 		473D78D9AEF4CAD1D1C0AA3B3C6681DB /* BXiOSUtils.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BXiOSUtils.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -502,6 +506,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3E2AEDEF1C2BCE4500DE202C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3E2AEDF01C2BCE5000DE202C /* SwitchCell.swift */,
+				3E2AEDF21C2BCEB300DE202C /* RightDetailCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4CCD251491259902E22CFE3DD3505F89 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +591,7 @@
 		9316DD365424912AF5F18C85D7D0D2D7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3E2AEDEF1C2BCE4500DE202C /* Cells */,
 				B2CC80C5C3FE7BE162DE84B458B64519 /* Buttons */,
 				595A5492DBC41DC5F2F66C6146471AAE /* Config */,
 				BA07A0F4928498534E353E6D69269B8A /* Controller */,
@@ -1217,6 +1231,7 @@
 				5835275050198A31561B662CD86343B6 /* GroupButtonBar.swift in Sources */,
 				383607CEF86A5AE60FA8C6DFDE86FD7A /* IconButton.swift in Sources */,
 				E5369ACAE5525EE505AE3E91D34C6838 /* IconLabel.swift in Sources */,
+				3E2AEDF31C2BCEB300DE202C /* RightDetailCell.swift in Sources */,
 				FB1018B57C57B7B40753864FC0508777 /* MultipleSelectSectionHeader.swift in Sources */,
 				98A4D1B0EB47E54829ED803DE3E6535E /* MultipleSelectViewController.swift in Sources */,
 				53F62125D5A94BA4C765E711AF5A050E /* OutlineButton.swift in Sources */,
@@ -1225,6 +1240,7 @@
 				BA958FB2DEBC00BBC75D47826EA58EDE /* RadioGroup.swift in Sources */,
 				98AA9BC93B5B6630FDC258EAD960E6FC /* RadioItem.swift in Sources */,
 				2D5434040A925513F75AA4103410F82F /* SelectAlertController.swift in Sources */,
+				3E2AEDF11C2BCE5000DE202C /* SwitchCell.swift in Sources */,
 				BEF3768A9319DEB532C974280518AFD9 /* SimpleFormAlertController.swift in Sources */,
 				10C25F321C98B46EE8E0396D3B43622D /* SingleCompomentPickerController.swift in Sources */,
 			);

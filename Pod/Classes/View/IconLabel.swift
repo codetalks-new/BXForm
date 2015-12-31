@@ -16,7 +16,7 @@ public class IconLabel : UIView{
   public let textLabel = UILabel(frame:CGRectZero)
   
   
-  override init(frame: CGRect) {
+  public override init(frame: CGRect) {
     super.init(frame: frame)
     commonInit()
   }
@@ -49,12 +49,16 @@ public class IconLabel : UIView{
     
   }
   
+
+  
   public var iconLeadingConstraint:NSLayoutConstraint!
   var iconPaddingConstraint:NSLayoutConstraint!
   
-  public var iconPadding : CGFloat = 6{
-    didSet{
-      iconPaddingConstraint.constant = iconPadding
+  public var iconPadding : CGFloat{
+    set{
+      iconPaddingConstraint.constant = newValue
+    }get{
+      return iconPaddingConstraint.constant
     }
   }
   
@@ -65,7 +69,7 @@ public class IconLabel : UIView{
     iconLeadingConstraint =  iconImageView.pinLeading(0)
     
     textLabel.pinBottom(0)
-    iconPaddingConstraint = textLabel.pinLeadingToSibling(iconImageView, margin: iconPadding)
+    iconPaddingConstraint = textLabel.pinLeadingToSibling(iconImageView, margin: 6)
     textLabel.pinTop(0)
     textLabel.pinTrailing(0)
     
@@ -107,6 +111,23 @@ public class IconLabel : UIView{
       return iconImageView.image
     }set{
       iconImageView.image = newValue
+      invalidateIntrinsicContentSize()
+    }
+  }
+  
+  public var textColor:UIColor?{
+    get{
+      return textLabel.textColor
+    }set{
+      textLabel.textColor = newValue
+    }
+  }
+  
+  public var font:UIFont{
+    get{
+      return textLabel.font
+    }set{
+      textLabel.font = newValue
       invalidateIntrinsicContentSize()
     }
   }

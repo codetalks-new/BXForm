@@ -19,12 +19,12 @@ public class GroupButtonBar:UIView{
     return buttons.count
   }
   
-  public var buttonHeight:CGFloat = 34{
+  public var buttonHeight:CGFloat = 33{
     didSet{
       setNeedsLayout()
     }
   }
-  public var buttonWidth:CGFloat = 94{
+  public var buttonWidth:CGFloat = 80{
     didSet{
       setNeedsLayout()
     }
@@ -51,13 +51,26 @@ public class GroupButtonBar:UIView{
   
   public func appendButton(button:UIButton){
     self.buttons.append(button)
-    setupButtons()
-    setNeedsLayout()
-    layoutIfNeeded()
+    onButtonListChanged()
   }
   
   public func appendButtons(buttons:[UIButton]){
     self.buttons.appendContentsOf(buttons)
+    onButtonListChanged()
+  }
+  public func updateButtons(buttons:[UIButton]){
+    for button in buttons{
+      button.removeFromSuperview()
+    }
+    for button in self.buttons{
+     button.removeFromSuperview()
+    }
+    self.buttons.removeAll()
+    self.buttons.appendContentsOf(buttons)
+    onButtonListChanged()
+  }
+  
+  func onButtonListChanged(){
     setupButtons()
     setNeedsLayout()
     layoutIfNeeded()
@@ -128,7 +141,8 @@ public class GroupButtonBar:UIView{
   
   private func layoutButtonsAlignRight(){
     let originY = bounds.height * 0.5 - buttonHeight * 0.5
-    var buttonFrame = CGRect(x: bounds.maxX - margin, y: originY, width: buttonWidth, height: buttonHeight)
+    let originX = bounds.maxX - margin - buttonWidth
+    var buttonFrame = CGRect(x: originX, y: originY, width: buttonWidth, height: buttonHeight)
     for button in buttons{
       button.frame = buttonFrame
       buttonFrame.offsetInPlace(dx: -(buttonWidth + buttonSpace), dy: 0)

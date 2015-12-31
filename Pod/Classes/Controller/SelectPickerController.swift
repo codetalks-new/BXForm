@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SelectPickerController<T:StringInterpolationConvertible where T:Equatable>:PickerController,UIPickerViewDataSource,UIPickerViewDelegate{
+public class SelectPickerController<T:CustomStringConvertible where T:Equatable>:PickerController,UIPickerViewDataSource,UIPickerViewDelegate{
   private var options:[T] = []
   public var rowHeight:CGFloat = 36{
     didSet{
@@ -85,7 +85,7 @@ public class SelectPickerController<T:StringInterpolationConvertible where T:Equ
   }
   
   public func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-    let title = "\(optionAtRow(row))"
+    let title = optionAtRow(row).description
     let attributedText = NSAttributedString(string: title, attributes: [
       NSForegroundColorAttributeName:textColor,
       NSFontAttributeName:font
