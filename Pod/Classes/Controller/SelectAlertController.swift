@@ -1,6 +1,5 @@
 //
 //  SelectAlertController.swift
-//  Youjia
 //
 //  Created by Haizhen Lee on 15/11/12.
 //
@@ -11,7 +10,7 @@ public class SelectAlertController<T:CustomStringConvertible>: UIAlertController
     let options:[T]
     public var onSelectCallback : ( (T) -> Void )?
     
-    init(options:[T]){
+    public init(options:[T]){
         self.options = options
         super.init(nibName: nil, bundle: nil)
     }

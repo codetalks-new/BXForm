@@ -27,6 +27,7 @@ public class SwitchCell : StaticTableViewCell,BXBindable{
   
   public func bind(item:Bool){
     toggleSwitch.on = item
+    contentView.bringSubviewToFront(toggleSwitch)
   }
   
   public override func awakeFromNib() {

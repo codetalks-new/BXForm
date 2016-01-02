@@ -13,6 +13,7 @@ public struct FormColors{
   public static var seperatorLineColor = UIColor(white: 0.914, alpha: 1.0) // 0.914 white
   public static var primaryTextColor = UIColor(hex:0x161616) // .08627451 white
   public static var secondaryTextColor = UIColor(hex:0x4b4b4b) //
+  public static var tertiaryTextColor = UIColor(hex:0x999999) //
   public static var hintTextColor = UIColor(hex:0x828282) // .509803922 white
   public static var primaryColor = UIColor(hex:0x1c5b7) // v2.5 :01c5b7 v2.0: 00aca0
   public static var accentColor = UIColor(hex:0xf79700)

@@ -18,6 +18,7 @@ public class PrimaryButtonCell : StaticTableViewCell{
   public let spanButton = UIButton(type:.System)
   public var primaryButtonTrailing: NSLayoutConstraint!
   public var primaryButtonLeading: NSLayoutConstraint!
+  public var primaryButtonHeight:NSLayoutConstraint!
   public var buttonTop: NSLayoutConstraint!
   
   public init() {
@@ -51,6 +52,22 @@ public class PrimaryButtonCell : StaticTableViewCell{
     }
   }
   
+  public var buttonHeight:CGFloat{
+    get{
+      return primaryButtonHeight.constant
+    }set{
+      primaryButtonHeight.constant = newValue
+    }
+  }
+  
+  public var buttonMarginTop:CGFloat{
+    get{
+      return buttonTop.constant
+    }set{
+      buttonTop.constant = newValue
+    }
+  }
+ 
   public func commonInit(){
     frame = CGRect(x: 0, y: 0, width: 320, height: 160)
     for childView in allOutlets{
@@ -63,7 +80,7 @@ public class PrimaryButtonCell : StaticTableViewCell{
   }
   
   func installConstaints(){
-    primaryButton.pinHeight(50)
+    primaryButtonHeight = primaryButton.pinHeight(50)
     primaryButtonTrailing =  primaryButton.pinTrailing(dp2dp(42))
     primaryButtonLeading =  primaryButton.pinLeading(dp2dp(42))
     buttonTop =  primaryButton.pinTop(50)
