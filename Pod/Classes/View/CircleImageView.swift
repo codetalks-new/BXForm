@@ -36,18 +36,19 @@ public class CircleImageView: UIImageView {
     updateBorderStyle()
   }
   
-  lazy var maskLayer : CAShapeLayer = { [unowned self] in
+  public lazy var maskLayer : CAShapeLayer = { [unowned self] in
     let maskLayer = CAShapeLayer()
     maskLayer.frame = self.frame
     self.layer.mask = maskLayer
     return maskLayer
-    }()
+  }()
+  
   
   public override func layoutSubviews() {
     super.layoutSubviews()
     layer.cornerRadius = bounds.width * 0.5
     maskLayer.frame = bounds
-    maskLayer.path = UIBezierPath(ovalInRect:bounds).CGPath
+    maskLayer.path = UIBezierPath(ovalInRect:bounds.insetBy(dx: borderWidth, dy: borderWidth)).CGPath
   }
   
   public required init?(coder aDecoder: NSCoder) {

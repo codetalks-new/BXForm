@@ -1,15 +1,15 @@
 //
-//  OvalLabel.swift
+//  OvalImageView.swift
 //  Pods
 //
-//  Created by Haizhen Lee on 15/12/29.
+//  Created by Haizhen Lee on 16/1/15.
 //
 //
+
 
 import UIKit
 
-public class OvalLabel:UILabel{
-  public var horizontalPadding:CGFloat = 4
+public class OvalImageView: UIImageView {
   public lazy var maskLayer : CAShapeLayer = { [unowned self] in
     let maskLayer = CAShapeLayer()
     maskLayer.frame = self.frame
@@ -19,12 +19,9 @@ public class OvalLabel:UILabel{
   
   public override func layoutSubviews() {
     super.layoutSubviews()
+    layer.cornerRadius = bounds.width * 0.5
     maskLayer.frame = bounds
     maskLayer.path = UIBezierPath(ovalInRect:bounds).CGPath
   }
   
-  public override func intrinsicContentSize() -> CGSize {
-    let size = super.intrinsicContentSize()
-    return CGSize(width: size.width + horizontalPadding, height: size.height + horizontalPadding)
-  }
 }
