@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BXForm
 
 
 public class AvatarView:UIView{
