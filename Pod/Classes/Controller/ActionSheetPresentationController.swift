@@ -14,11 +14,19 @@ public class ActionSheetPresentationController:UIPresentationController{
     let view = UIView()
     view.backgroundColor = UIColor(white: 0.0, alpha: 0.4)
     view.alpha  = 0.0
+    view.userInteractionEnabled = true
+    view.tag = 1024
+    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismiss"))
     return view
   }()
   
+  func dismiss(){
+    presentedViewController.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
   public override func frameOfPresentedViewInContainerView() -> CGRect {
     let bounds = containerView!.bounds
+    
     return bounds.divide(presentedViewController.preferredContentSize.height, fromEdge: CGRectEdge.MaxYEdge).slice
   }
   

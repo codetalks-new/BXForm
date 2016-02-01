@@ -12,17 +12,25 @@ import BXModel
 
 
 public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: UITableViewController {
-    var options:[T] = []
+    public private(set) var options:[T] = []
     var adapter : SimpleTableViewAdapter<T>!
     var selectedItems :Set<T> = []
-    var completionHandler : ( (Set<T>) -> Void )?
-    var multiple = true
-    var showSelectToolbar = true
+    public var completionHandler : ( (Set<T>) -> Void )?
+    public var onSelectOption:(T -> Void)?
+    public var multiple = true
+    public var showSelectToolbar = true
   
-   public init(options:[T] = []){
-        self.options = options
+   public init(){
         super.init(style: .Grouped)
     }
+  
+  public func updateOptions(options:[T]){
+    self.options.removeAll()
+    self.options.appendContentsOf(options)
+    if isViewLoaded(){
+     adapter.updateItems(options)
+    }
+  }
  
   
   public var selectAllButton:UIBarButtonItem?
@@ -86,6 +94,7 @@ public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: 
             return
         }
       
+      
         if selectedItems.contains(item){
             selectedItems.remove(item)
         }else{
@@ -96,7 +105,8 @@ public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: 
         cell.accessoryType = isChecked ? .Checkmark : .None
       
         if !multiple{
-            selectDone(cell)
+          self.onSelectOption?(item)
+          selectDone(cell)
         }
     }
 

@@ -26,9 +26,13 @@ public class GridView:UIView{
     }
   }
   
-  public init(){
-    super.init(frame:CGRectZero)
-    commonInit()
+  convenience init(){
+    self.init(frame:CGRectZero)
+    backgroundColor = .whiteColor()
+  }
+  
+  public override init(frame: CGRect) {
+    super.init(frame: frame)
   }
   
   public required init?(coder aDecoder: NSCoder) {
@@ -80,17 +84,13 @@ public class GridView:UIView{
     relayout()
   }
   
-  func commonInit(){
-    backgroundColor = .whiteColor()
-    installChildViews()
-    installConstaints()
-  }
   
   func relayout(){
     for childView in childViews{
       childView.removeFromSuperview()
     }
-    commonInit()
+    installChildViews()
+    installChildViewsConstaints()
   }
  
   func installChildViews(){
@@ -104,7 +104,7 @@ public class GridView:UIView{
     return Int(ceil(Double(childViews.count) / Double(maxRows)))
   }
   
-  func installConstaints(){
+  public func installChildViewsConstaints(){
     var col = 0
     var row = 0
     let xMultiple: CGFloat = 1 / CGFloat(maxColCount)
@@ -145,6 +145,9 @@ public class GridView:UIView{
   
   public override func drawRect(rect: CGRect) {
     super.drawRect(rect)
+    if !showDividerMiddle{
+      return
+    }
     let childViewWidth = maxChildViewWidth
     let childViewHeight = maxChildViewHeight
     

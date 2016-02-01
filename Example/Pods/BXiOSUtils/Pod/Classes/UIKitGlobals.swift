@@ -17,3 +17,12 @@ public func dp2dp(dp:CGFloat) -> CGFloat{
   let coefficent = screenWidth / designBaseWidth
   return ceil(dp * coefficent)
 }
+
+// 比 375 小的设备对应缩小，大的不变
+public func sdp2dp(dp:CGFloat) -> CGFloat{
+  if screenWidth >= designBaseWidth{
+    return dp
+  }else{
+    return dp2dp(dp)
+  }
+}

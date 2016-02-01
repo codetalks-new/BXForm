@@ -26,7 +26,7 @@ public class DatePickerController: BasePickerController{
   
   public var  pickDoneHandler:(NSDate -> Void)?
   
-  override func onPickDone(){
+  override public func onPickDone(){
     self.pickDoneHandler?(date)
   }
   

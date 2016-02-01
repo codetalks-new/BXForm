@@ -149,4 +149,13 @@ public class GroupButtonBar:UIView{
     }
   }
   
+  public override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+    let childView = super.hitTest(point, withEvent: event)
+    if childView == self {
+    // We'd better receive all the touch event in our area
+      return nil
+    }
+    return childView
+  }
+  
 }

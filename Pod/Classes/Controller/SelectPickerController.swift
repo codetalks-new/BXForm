@@ -32,6 +32,10 @@ public class SelectPickerController<T:CustomStringConvertible where T:Equatable>
    self.options = options
     super.init(nibName: nil, bundle: nil)
   }
+  
+  public init(){
+    super.init(nibName: nil, bundle: nil)
+  }
  
   public override func viewDidLoad() {
     super.viewDidLoad()
@@ -51,7 +55,9 @@ public class SelectPickerController<T:CustomStringConvertible where T:Equatable>
   
   public func updateOptions(options:[T]){
     self.options = options
-    picker.reloadAllComponents()
+    if isViewLoaded(){
+      picker.reloadAllComponents()
+    }
   }
   
   public func appendOptions(options:[T]){
@@ -94,7 +100,7 @@ public class SelectPickerController<T:CustomStringConvertible where T:Equatable>
   }
 
   // MARK: Base Controller
-  override func onPickDone() {
+  override public func onPickDone() {
     let selectedRow = picker.selectedRowInComponent(0)
     let option = optionAtRow(selectedRow)
     onSelectOption?(option)

@@ -10,6 +10,19 @@ import UIKit
 
 public class OvalLabel:UILabel{
   public var horizontalPadding:CGFloat = 4
+  
+  public var outlineStyle = BXOutlineStyle.Oval{
+    didSet{
+      updateOvalPath()
+    }
+  }
+  
+  public var cornerRadius:CGFloat = 4.0 {
+    didSet{
+      updateOvalPath()
+    }
+  }
+  
   public lazy var maskLayer : CAShapeLayer = { [unowned self] in
     let maskLayer = CAShapeLayer()
     maskLayer.frame = self.frame
@@ -20,7 +33,20 @@ public class OvalLabel:UILabel{
   public override func layoutSubviews() {
     super.layoutSubviews()
     maskLayer.frame = bounds
-    maskLayer.path = UIBezierPath(ovalInRect:bounds).CGPath
+    updateOvalPath()
+  }
+  
+  private func updateOvalPath(){
+    let path:UIBezierPath
+    switch outlineStyle{
+    case .Rounded:
+      path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+    case .Oval:
+      path = UIBezierPath(ovalInRect: bounds)
+    case .Semicircle:
+      path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height * 0.5)
+    }
+    maskLayer.path = path.CGPath
   }
   
   public override func intrinsicContentSize() -> CGSize {

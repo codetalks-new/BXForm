@@ -125,7 +125,7 @@ public class BasePickerController: UIViewController {
     onPickDone()
   }
   
-  func onPickDone(){
+  public func onPickDone(){
     
   }
   

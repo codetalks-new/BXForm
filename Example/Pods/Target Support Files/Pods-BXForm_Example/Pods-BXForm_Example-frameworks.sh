@@ -87,6 +87,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-BXForm_Example/BXForm.framework"
   install_framework "Pods-BXForm_Example/BXModel.framework"
   install_framework "Pods-BXForm_Example/BXiOSUtils.framework"
+  install_framework "Pods-BXForm_Example/PinAuto.framework"
   install_framework "Pods-BXForm_Example/PinAutoLayout.framework"
   install_framework "Pods-BXForm_Example/SwiftyJSON.framework"
 fi
@@ -94,6 +95,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BXForm_Example/BXForm.framework"
   install_framework "Pods-BXForm_Example/BXModel.framework"
   install_framework "Pods-BXForm_Example/BXiOSUtils.framework"
+  install_framework "Pods-BXForm_Example/PinAuto.framework"
   install_framework "Pods-BXForm_Example/PinAutoLayout.framework"
   install_framework "Pods-BXForm_Example/SwiftyJSON.framework"
 fi

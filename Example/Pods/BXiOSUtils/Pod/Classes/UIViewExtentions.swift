@@ -109,3 +109,35 @@ public extension UIView /*frame based UI Layout*/ {
   }
   
 }
+
+public extension UIView{
+  public struct DrawSettings{
+    public static var seperatorLineWidth :CGFloat = 0.5
+    public static var seperatorLineColor : UIColor = UIColor(white: 0.912, alpha: 1.0)
+    public static var gapRectColor:UIColor = UIColor(white: 0.88, alpha: 1.0)
+    public static var gapRectHeight :CGFloat = 10
+  }
+  public func bx_drawLineAtY(y:CGFloat,inset:CGFloat=15){
+    DrawSettings.seperatorLineColor.set()
+    let lineRect = CGRect(x: 0, y: y, width: bounds.width, height: DrawSettings.seperatorLineWidth).insetBy(dx: inset, dy: 0)
+    UIRectFill(lineRect)
+  }
+  
+  public func bx_drawLineAtY(y:CGFloat,leadingInset inset:CGFloat=54){
+    DrawSettings.seperatorLineColor.set()
+    let lineRect = CGRect(x: inset, y: y, width: bounds.width - inset, height: DrawSettings.seperatorLineWidth)
+    UIRectFill(lineRect)
+  }
+  
+  public func bx_drawGapRect(atBottom:Bool = true,atTop:Bool = false){
+    DrawSettings.gapRectColor.setFill()
+    if atBottom {
+      let gapRect = bounds.divide(DrawSettings.gapRectHeight, fromEdge: CGRectEdge.MaxYEdge).slice
+      UIRectFill(gapRect)
+    }
+    if atTop{
+      let gapRect = bounds.divide(DrawSettings.gapRectHeight, fromEdge: CGRectEdge.MinYEdge).slice
+      UIRectFill(gapRect)
+    }
+  }
+}

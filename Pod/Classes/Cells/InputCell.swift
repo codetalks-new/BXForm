@@ -2,68 +2,43 @@
 //  InputCell.swift
 //  Pods
 //
-//  Created by Haizhen Lee on 16/1/7.
+//  Created by Haizhen Lee on 16/1/23.
 //
 //
 
-import Foundation
 
 // Build for target uimodel
-//locale (None, None)
 import UIKit
-import SwiftyJSON
 import BXModel
 import BXiOSUtils
+import PinAuto
 
-// -InputView:v
-// _[l15,y,r15,r0]:f
-// span[w115,ver0,r0]:b
+//-InputCell:stc
+//_[l15,y,w72](f17,cst)
+//_[l18,y,r15](f15,cht):f
 
-public class InputGroupView : UIView{
+public class InputCell : StaticTableViewCell{
+  public let label = UILabel(frame:CGRectZero)
   public let textField = UITextField(frame:CGRectZero)
-  public let spanButton = UIButton(type:.Custom)
   
-  public var showSpanButton:Bool = true{
-    didSet{
-      spanButton.hidden = !showSpanButton
-      relayout()
-    }
+  
+  public convenience init() {
+    self.init(style: .Default, reuseIdentifier: "InputCellCell")
   }
- 
-  public var showSpanDivider:Bool = true{
-    didSet{
-      setNeedsDisplay()
-    }
-  }
-  
-  public var spanDividerColor:UIColor = UIColor(white: 0.937, alpha: 1.0){
-    didSet{
-      setNeedsDisplay()
-    }
-  }
-  
-  public var spanDividerLineWidth:CGFloat = 1.0{
-    didSet{
-      setNeedsDisplay()
-    }
-  }
-  
-  
-  public override init(frame: CGRect) {
-    super.init(frame: frame)
+  public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
     commonInit()
   }
-  
   public override func awakeFromNib() {
     super.awakeFromNib()
     commonInit()
   }
   
   var allOutlets :[UIView]{
-    return [textField,spanButton]
+    return [label,textField]
   }
-  var allUIButtonOutlets :[UIButton]{
-    return [spanButton]
+  var allUILabelOutlets :[UILabel]{
+    return [label]
   }
   var allUITextFieldOutlets :[UITextField]{
     return [textField]
@@ -72,58 +47,31 @@ public class InputGroupView : UIView{
     super.init(coder: aDecoder)
   }
   
-  func commonInit(){
-    installChildViews()
+  public func commonInit(){
+    for childView in allOutlets{
+      contentView.addSubview(childView)
+      childView.translatesAutoresizingMaskIntoConstraints = false
+    }
     installConstaints()
     setupAttrs()
     
   }
   
-  func relayout(){
-    for childView in allOutlets{
-      childView.removeFromSuperview()
-    }
-    installChildViews()
-    installConstaints()
-  }
-  
-  func installChildViews(){
-    for childView in allOutlets{
-      addSubview(childView)
-      childView.translatesAutoresizingMaskIntoConstraints = false
-    }
-  }
-  
-  func installConstaints(){
-    textField.pinCenterY()
-    textField.pinLeading(15)
-    
-    if showSpanButton{
-      textField.pinTrailingToSibing(spanButton, margin: 4)
-      
-      spanButton.pinTrailing(0)
-      spanButton.pinVertical(0)
-      spanButton.pinWidth(115)
-    }else{
-      textField.pinTrailing(15)
-    }
-    
+  public func installConstaints(){
+    label.pa_centerY.install()
+    label.pa_leading.eq(15).install()
+    label.pa_width.eq(72).install()
+    textField.pa_centerY.install()
+    textField.pa_after(label, offset: sdp2dp(15)).install()
+    textField.pa_trailing.eq(15).install()
   }
   
   public func setupAttrs(){
-    backgroundColor = .whiteColor()
-  }
-  
-  public override func drawRect(rect: CGRect) {
-    super.drawRect(rect)
-    if showSpanButton && showSpanDivider{
-      let ctx = UIGraphicsGetCurrentContext()
-      let startX  = spanButton.frame.minX
-      spanDividerColor.setStroke()
-      CGContextMoveToPoint(ctx, startX, rect.minY)
-      CGContextAddLineToPoint(ctx, startX, rect.maxY)
-      CGContextStrokePath(ctx)
-    }
-    
+    label.textAlignment = .Left
+    label.textColor = FormColors.secondaryTextColor
+    label.font = UIFont.systemFontOfSize(17)
+    textField.textColor = UIColor.darkTextColor()
+    textField.font = UIFont.systemFontOfSize(17)
+    shouldHighlight = false
   }
 }

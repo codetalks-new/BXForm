@@ -21,6 +21,32 @@ public class OvalButton:UIButton{
   public override func layoutSubviews() {
     super.layoutSubviews()
     maskLayer.frame = bounds
-    maskLayer.path = UIBezierPath(ovalInRect:bounds).CGPath
+    updateOutlinePath()
+  }
+  
+  private func updateOutlinePath(){
+    let path:UIBezierPath
+    switch outlineStyle{
+    case .Rounded:
+      path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+    case .Oval:
+      path = UIBezierPath(ovalInRect: bounds)
+    case .Semicircle:
+      path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height * 0.5)
+    }
+    maskLayer.path = path.CGPath
+  }
+  
+  
+  public var outlineStyle = BXOutlineStyle.Oval{
+    didSet{
+      updateOutlinePath()
+    }
+  }
+  
+  public var cornerRadius:CGFloat = 4.0 {
+    didSet{
+      updateOutlinePath()
+    }
   }
 }

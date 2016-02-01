@@ -33,6 +33,14 @@ public func bx_libraryPath() -> String{
   return NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true).first!
 }
 
+public func bx_systemVersion() ->String{
+  return UIDevice.currentDevice().systemVersion
+}
+
+public func bx_deviceModel() -> String{
+  return UIDevice.currentDevice().model
+}
+
 public func bx_versionName() -> String{
   return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String ?? "Unkown"
 }

@@ -19,7 +19,6 @@ public class OvalImageView: UIImageView {
   
   public override func layoutSubviews() {
     super.layoutSubviews()
-    layer.cornerRadius = bounds.width * 0.5
     maskLayer.frame = bounds
     maskLayer.path = UIBezierPath(ovalInRect:bounds).CGPath
   }

@@ -1,15 +1,15 @@
 {
   "name": "BXForm",
   "version": "0.1.0",
-  "summary": "A short description of BXForm.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/BXForm",
+  "summary": "BXForm is a Collection of Custom UI Widget and Custom Controller",
+  "description": "BXForm is a Collection of Custom UI Widget and Custom Controller ,Based on BXModel,BXiOSUtils,and SwiftyJSON",
+  "homepage": "https://github.com/banxi1988/BXForm",
   "license": "MIT",
   "authors": {
     "banxi1988": "banxi1988@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/BXForm.git",
+    "git": "https://github.com/banxi1988/BXForm.git",
     "tag": "0.1.0"
   },
   "platforms": {
@@ -27,6 +27,9 @@
 
     ],
     "PinAutoLayout": [
+
+    ],
+    "PinAuto": [
 
     ],
     "BXiOSUtils": [

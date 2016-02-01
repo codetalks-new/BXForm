@@ -9,6 +9,25 @@ import UIKit
 public class IconButton:UIButton{
   public var iconPadding = FormMetrics.iconPadding
   
+  public var cornerRadius:CGFloat = 4.0 {
+    didSet{
+      setNeedsLayout()
+    }
+  }
+  
+  public var lineWidth :CGFloat = 0.5 {
+    didSet{
+      setNeedsLayout()
+    }
+  }
+  
+  lazy var maskLayer:CALayer = {
+    let layer = CALayer()
+    self.layer.mask = layer
+    return layer
+  }()
+  
+  
   public override func intrinsicContentSize() -> CGSize {
       let size = super.intrinsicContentSize()
       return CGSize(width: size.width + iconPadding, height: size.height)

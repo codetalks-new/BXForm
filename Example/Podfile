@@ -1,12 +1,10 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'BXForm_Example', :exclusive => true do
+target 'BXForm_Example' do
   pod "BXForm", :path => "../"
 end
 
-target 'BXForm_Tests', :exclusive => true do
+target 'BXForm_Tests' do
   pod "BXForm", :path => "../"
-
-  
 end
