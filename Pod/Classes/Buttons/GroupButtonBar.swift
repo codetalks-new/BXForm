@@ -11,6 +11,7 @@ import Foundation
 public enum GroupButtonBarAlignment:Int{
   case Left
   case Right
+  case Center
 }
 
 public class GroupButtonBar:UIView{
@@ -126,7 +127,48 @@ public class GroupButtonBar:UIView{
     switch alignment{
     case .Right:layoutButtonsAlignRight()
     case .Left:layoutButtonsAlignLeft()
+    case .Center: layoutButtonsAlignCenter()
     }
+    
+  }
+  
+  private func layoutButtonsAlignCenter(){
+    if buttons.isEmpty{
+      return
+    }
+   
+    var views = buttons
+    var leftFrame = CGRectZero
+    var rightFrame = CGRectZero
+    
+    let fullOffset = buttonWidth + buttonSpace
+      let middleFrame = CGRect(center: bounds.center, width: buttonWidth, height: buttonHeight)
+    // 奇数个先处理中间一个
+    if views.count % 2 != 0{
+       let middle = (views.count + 1) / 2 - 1
+        let middleView = views.removeAtIndex(middle)
+        middleView.frame = middleFrame
+        leftFrame = middleFrame.offsetBy(dx: -fullOffset, dy: 0)
+        rightFrame = middleFrame.offsetBy(dx: fullOffset, dy: 0)
+    }else{
+        let offset = (buttonWidth + buttonSpace) * 0.5
+        leftFrame = middleFrame.offsetBy(dx: -offset, dy: 0)
+        rightFrame = middleFrame.offsetBy(dx: offset, dy: 0)
+    }
+    
+    if views.isEmpty{
+      return
+    }
+    
+    while !views.isEmpty{
+        let leftView = views.removeFirst()
+        let rightView = views.removeLast()
+        leftView.frame = leftFrame
+        rightView.frame = rightFrame
+        leftFrame = leftFrame.offsetBy(dx: -fullOffset, dy: 0)
+        rightFrame = rightFrame.offsetBy(dx: fullOffset, dy: 0)
+    }
+    
     
   }
   
@@ -147,15 +189,6 @@ public class GroupButtonBar:UIView{
       button.frame = buttonFrame
       buttonFrame.offsetInPlace(dx: -(buttonWidth + buttonSpace), dy: 0)
     }
-  }
-  
-  public override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-    let childView = super.hitTest(point, withEvent: event)
-    if childView == self {
-    // We'd better receive all the touch event in our area
-      return nil
-    }
-    return childView
   }
   
 }
