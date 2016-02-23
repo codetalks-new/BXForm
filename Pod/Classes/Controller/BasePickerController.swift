@@ -19,7 +19,6 @@ public class BasePickerController: UIViewController {
   
   public var pickerView:UIView{
     fatalError("Should Implements Custom pickerView")
-    return UIView()
   }
   
   public lazy var dividerView :UIView = {

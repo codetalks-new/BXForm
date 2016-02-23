@@ -32,7 +32,7 @@ public class AlertPresentationController:UIPresentationController{
   public override func presentationTransitionWillBegin() {
     let containerView = self.containerView!
     let presentedVC = self.presentedViewController
-    let presentingVC = self.presentingViewController
+//    let presentingVC = self.presentingViewController
     // Set the dimming view to the size of the container's bounds, and make it transparent initialy
     dimmingView.frame = containerView.bounds
     dimmingView.alpha = 0.0

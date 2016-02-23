@@ -8,6 +8,7 @@
 
 import UIKit
 
+// PinAuto Chian Style Method Value Container
 public class LayoutConstraintParams{
   public var priority:UILayoutPriority = UILayoutPriorityRequired
   public var relation: NSLayoutRelation = NSLayoutRelation.Equal
@@ -26,14 +27,6 @@ public class LayoutConstraintParams{
     }
     return false
   }
- 
-//  private let attributesOfOffsetOpposite: [NSLayoutAttribute] = [.Leading,.LeadingMargin,.Left,.LeftMargin,.Top,.TopMargin]
-//  private var shouldFlipOffsetValue:Bool{
-//    if firstItemAttribute == secondItemAttribute{
-//      
-//    }
-//    return false
-//  }
   
   public init(firstItem:UIView){
     self.firstItem = firstItem
@@ -87,6 +80,11 @@ public class LayoutConstraintParams{
   
   public var withLteRelation:LayoutConstraintParams{
     self.relation =  .LessThanOrEqual
+    return self
+  }
+  
+  public var withEqRelation:LayoutConstraintParams{
+    self.relation =  .Equal
     return self
   }
   
@@ -154,6 +152,14 @@ public class LayoutConstraintParams{
   }
  
   @warn_unused_result
+  public func eqTo(item:UIView) -> LayoutConstraintParams{
+    secondItem = item
+    relation = .Equal
+    secondItemAttribute = firstItemAttribute
+    return self
+  }
+  
+  @warn_unused_result
   public func offset(value:CGFloat) -> LayoutConstraintParams{
     constant = value
     return self
@@ -170,7 +176,7 @@ public class LayoutConstraintParams{
   
   
   @warn_unused_result
-  public func gte(item:UIView) -> LayoutConstraintParams{
+  public func gteTo(item:UIView) -> LayoutConstraintParams{
     secondItem = item
     relation = .GreaterThanOrEqual
     secondItemAttribute = firstItemAttribute
@@ -244,6 +250,7 @@ public class LayoutConstraintParams{
   
 }
 
+// PinAuto Core Method
 public extension UIView{
   
   private var pa_makeConstraint:LayoutConstraintParams{
@@ -268,7 +275,8 @@ public extension UIView{
   }
  
   @warn_unused_result
-  public func pa_aspectRatio(ratio:CGFloat) -> LayoutConstraintParams{
+  @available(*,deprecated=1.2, renamed="pa_aspectRatio", message="better used pa_aspectRatio")
+  public func pac_aspectRatio(ratio:CGFloat) -> LayoutConstraintParams{
     let pa = pa_makeConstraint
     pa.firstItemAttribute = .Height
     pa.secondItemAttribute = .Width
@@ -278,6 +286,17 @@ public extension UIView{
     return pa
   }
   
+  @warn_unused_result
+  @available(*,introduced=1.2)
+  public func pa_aspectRatio(ratio:CGFloat) -> LayoutConstraintParams{
+    let pa = pa_makeConstraint
+    pa.firstItemAttribute = .Height
+    pa.secondItemAttribute = .Width
+    pa.secondItem = self
+    pa.multiplier = ratio // height = width * ratio
+    // ratio = width:height
+    return pa
+  }
   
   public var pa_leading:LayoutConstraintParams{
     let pa = pa_makeConstraint
