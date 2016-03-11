@@ -11,6 +11,15 @@ import UIKit
 import SwiftyJSON
 import BXModel
 
+public enum ConfirmButtonBarStyle{
+  case Plain
+  case Bordered
+  
+  var isPlain:Bool{
+    return self == .Plain
+  }
+}
+
 // -ConfirmButtonBar:v
 // cancel[h34,w102,y,x35](cdt):b;ok[h34,w102,y,x35](cw):b
 public typealias OnCancelHandler = (Void -> Void)
@@ -21,6 +30,12 @@ public class ConfirmButtonBar : UIView{
   public let okButton = UIButton(type:.System)
   public var onCancelHandler:OnCancelHandler?
   public var onOkHandler:OnOkHandler?
+  var style:ConfirmButtonBarStyle = .Plain
+  public  init(style:ConfirmButtonBarStyle){
+    super.init(frame:CGRectZero)
+    self.style = style
+    commonInit()
+  }
   
   
   public override init(frame: CGRect) {
@@ -55,6 +70,14 @@ public class ConfirmButtonBar : UIView{
   }
   
   func installConstaints(){
+    if style.isPlain{
+      cancelButton.pa_leading.eq(15).install()
+      okButton.pa_trailing.eq(15).install()
+      for button in [okButton,cancelButton]{
+        button.pa_width.gte(40).install()
+        button.pa_centerY.install()
+      }
+    }else{
     cancelButton.pinCenterY()
     cancelButton.pinHeight(34)
     cancelButton.pinWidth(102)
@@ -64,17 +87,28 @@ public class ConfirmButtonBar : UIView{
     okButton.pinHeight(34)
     okButton.pinWidth(102)
     okButton.pinLeadingToCenterX(dp2dp(40))
+    }
     
   }
   
   func setupAttrs(){
-    cancelButton.setTitleColor(UIColor.darkTextColor(), forState: .Normal)
-    okButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     cancelButton.setTitle("取消", forState: .Normal)
     okButton.setTitle("确定", forState: .Normal)
+
     
-    cancelButton.setBackgroundImage(FormButtons.lightGrayImage, forState: .Normal)
-    okButton.setBackgroundImage(FormButtons.primaryImage, forState: .Normal)
+    if style.isPlain{
+      cancelButton.setTitleColor(FormColors.tertiaryTextColor, forState: .Normal)
+      okButton.setTitleColor(UIColor(hex: 0xf23d3d), forState: .Normal)
+      
+      for button in [okButton,cancelButton]{
+        button.titleLabel?.font = UIFont.systemFontOfSize(16)
+      }
+    }else{
+      cancelButton.setTitleColor(UIColor.darkTextColor(), forState: .Normal)
+      okButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+      cancelButton.setBackgroundImage(FormButtons.lightGrayImage, forState: .Normal)
+      okButton.setBackgroundImage(FormButtons.primaryImage, forState: .Normal)
+    }
     
     cancelButton.addTarget(self, action: "onCancelButtonPressed:", forControlEvents: .TouchUpInside)
     okButton.addTarget(self, action: "onOkButtonPressed:", forControlEvents: .TouchUpInside)
