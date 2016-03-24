@@ -19,6 +19,7 @@ public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: 
     public var onSelectOption:(T -> Void)?
     public var multiple = true
     public var showSelectToolbar = true
+    public var isSelectAll = false
   
    public convenience init(){
     self.init(options:[],style: .Grouped)
@@ -53,7 +54,6 @@ public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: 
   }
   
   
-  var isSelectAll = false
   func selectAllButtonPressed(sender:AnyObject){
     isSelectAll = !isSelectAll
     selectAllButton?.title = isSelectAll ? "全不选": "全选"
