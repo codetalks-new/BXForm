@@ -14,7 +14,7 @@ import BXModel
 public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: UITableViewController {
     public private(set) var options:[T] = []
     public let adapter : SimpleTableViewAdapter<T> = SimpleTableViewAdapter<T>()
-    public private(set) var selectedItems :Set<T> = []
+    public var selectedItems :Set<T> = []
     public var completionHandler : ( (Set<T>) -> Void )?
     public var onSelectOption:(T -> Void)?
     public var multiple = true
