@@ -38,7 +38,6 @@ BXForm is a Collection of Custom UI Widget and Custom Controller ,Based on BXMod
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'BXModel'
-  s.dependency 'PinAutoLayout'
   s.dependency 'PinAuto'
   s.dependency 'BXiOSUtils'
 

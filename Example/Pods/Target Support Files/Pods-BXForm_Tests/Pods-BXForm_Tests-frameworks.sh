@@ -84,18 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-BXForm_Tests/BXForm.framework"
-  install_framework "Pods-BXForm_Tests/BXModel.framework"
-  install_framework "Pods-BXForm_Tests/BXiOSUtils.framework"
-  install_framework "Pods-BXForm_Tests/PinAuto.framework"
-  install_framework "Pods-BXForm_Tests/PinAutoLayout.framework"
-  install_framework "Pods-BXForm_Tests/SwiftyJSON.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXForm/BXForm.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXModel/BXModel.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXiOSUtils/BXiOSUtils.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/PinAuto/PinAuto.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-BXForm_Tests/BXForm.framework"
-  install_framework "Pods-BXForm_Tests/BXModel.framework"
-  install_framework "Pods-BXForm_Tests/BXiOSUtils.framework"
-  install_framework "Pods-BXForm_Tests/PinAuto.framework"
-  install_framework "Pods-BXForm_Tests/PinAutoLayout.framework"
-  install_framework "Pods-BXForm_Tests/SwiftyJSON.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXForm/BXForm.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXModel/BXModel.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXiOSUtils/BXiOSUtils.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/PinAuto/PinAuto.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi
