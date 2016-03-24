@@ -102,9 +102,9 @@ public class NumberPasswordEditorView : UIView,UITextFieldDelegate{
   public func setupAttrs(){
     hiddenTextField.delegate = self
     hiddenTextField.keyboardType = .NumberPad
-    hiddenTextField.addTarget(self, action: "onTextChanged:", forControlEvents: .EditingChanged)
+    hiddenTextField.addTarget(self, action: #selector(NumberPasswordEditorView.onTextChanged(_:)), forControlEvents: .EditingChanged)
     hiddenTextField.secureTextEntry = true // 就算不可见也要设置,因为 UITextField 有全局广播通知
-    passwordNumbersView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onTap:"))
+    passwordNumbersView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(NumberPasswordEditorView.onTap(_:))))
     layer.cornerRadius = 4
     clipsToBounds = true
   }
@@ -134,7 +134,7 @@ public class NumberPasswordEditorView : UIView,UITextFieldDelegate{
     var count = 0
     for placehoder in passwordNumberPlaceholders{
       placehoder.hidden = count >= numberCount
-      count++
+      count += 1
     }
   }
   
@@ -148,7 +148,7 @@ public class NumberPasswordEditorView : UIView,UITextFieldDelegate{
   }
   
   public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-    NSLog("\(__FUNCTION__) \(range) \(string)")
+    NSLog("\(#function) \(range) \(string)")
     let password = textField.text ?? ""
     let currentCount = password.characters.count
     if range.length == 0 {

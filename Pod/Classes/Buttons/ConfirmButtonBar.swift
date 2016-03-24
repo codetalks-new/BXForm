@@ -110,8 +110,8 @@ public class ConfirmButtonBar : UIView{
       okButton.setBackgroundImage(FormButtons.primaryImage, forState: .Normal)
     }
     
-    cancelButton.addTarget(self, action: "onCancelButtonPressed:", forControlEvents: .TouchUpInside)
-    okButton.addTarget(self, action: "onOkButtonPressed:", forControlEvents: .TouchUpInside)
+    cancelButton.addTarget(self, action: #selector(ConfirmButtonBar.onCancelButtonPressed(_:)), forControlEvents: .TouchUpInside)
+    okButton.addTarget(self, action: #selector(ConfirmButtonBar.onOkButtonPressed(_:)), forControlEvents: .TouchUpInside)
   }
   
   @IBAction func onCancelButtonPressed(sender:AnyObject){

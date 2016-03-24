@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXForm"
-  s.version          = "0.1.5"
+  s.version          = "0.2.0"
   s.summary          = "BXForm is a Collection of Custom UI Widget and Custom Controller "
 
 # This description is used to generate tags and improve search results.

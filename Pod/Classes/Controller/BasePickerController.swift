@@ -107,8 +107,8 @@ public class BasePickerController: UIViewController {
   override public func viewDidLoad() {
     super.viewDidLoad()
     
-    confirmBar.cancelButton.addTarget(self, action: "onCancelButtonPressed:", forControlEvents: .TouchUpInside)
-    confirmBar.okButton.addTarget(self, action: "onOkButtonPressed:", forControlEvents: .TouchUpInside)
+    confirmBar.cancelButton.addTarget(self, action: #selector(BasePickerController.onCancelButtonPressed(_:)), forControlEvents: .TouchUpInside)
+    confirmBar.okButton.addTarget(self, action: #selector(BasePickerController.onOkButtonPressed(_:)), forControlEvents: .TouchUpInside)
   }
   
   public var onCancelHandler:( Void -> Void)?
