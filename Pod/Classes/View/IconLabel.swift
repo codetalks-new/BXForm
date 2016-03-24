@@ -69,7 +69,7 @@ public class IconLabel : UIView{
     iconLeadingConstraint =  iconImageView.pa_leading.eq(0).install() // pinLeading(0)
     
     textLabel.pa_bottom.eq(0).install()
-    iconPaddingConstraint =  textLabel.pa_after(iconImageView, offset: 6) // textLabel.pinLeadingToSibling(iconImageView, margin: 6)
+    iconPaddingConstraint =  textLabel.pa_after(iconImageView, offset: 6).install() // textLabel.pinLeadingToSibling(iconImageView, margin: 6)
     textLabel.pa_top.eq(0).install()
     textLabel.pa_trailing.eq(0).install()
     
