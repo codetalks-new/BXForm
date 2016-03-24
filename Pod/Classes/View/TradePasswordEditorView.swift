@@ -90,12 +90,12 @@ public class NumberPasswordEditorView : UIView,UITextFieldDelegate{
   }
   
   public func installConstaints(){
-    passwordNumbersView.pinEdge(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+    passwordNumbersView.pac_edge(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     
-    hiddenTextField.pinCenterY()
-    hiddenTextField.pinCenterX()
-    hiddenTextField.pinHorizontal(0)
-    hiddenTextField.pinHeight(36)
+    hiddenTextField.pa_centerY.install()
+    hiddenTextField.pa_centerX.install()
+    hiddenTextField.pac_horizontal()
+    hiddenTextField.pa_height.eq(36).install()
     
   }
   

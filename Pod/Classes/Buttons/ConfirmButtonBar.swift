@@ -78,15 +78,15 @@ public class ConfirmButtonBar : UIView{
         button.pa_centerY.install()
       }
     }else{
-    cancelButton.pinCenterY()
-    cancelButton.pinHeight(34)
-    cancelButton.pinWidth(102)
-    cancelButton.pinTrailingToCenterX(dp2dp(40))
+    cancelButton.pa_centerY.install()
+    cancelButton.pa_height.eq(34).install()
+    cancelButton.pa_width.eq(102).install()
+    cancelButton.pa_trailing.equalTo(.CenterX, ofView: self).eq(dp2dp(40)).install() //  pinTrailingToCenterX(dp2dp(40))
     
-    okButton.pinCenterY()
-    okButton.pinHeight(34)
-    okButton.pinWidth(102)
-    okButton.pinLeadingToCenterX(dp2dp(40))
+    okButton.pa_centerY.install()
+    okButton.pa_height.eq(34).install()
+    okButton.pa_width.eq(102).install()
+    okButton.pa_leading.eq(dp2dp(40)).equalTo(.CenterX, ofView: self).install()
     }
     
   }

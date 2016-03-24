@@ -65,8 +65,8 @@ public class IconLabel : UIView{
   func installConstaints(){
     translatesAutoresizingMaskIntoConstraints = false
     
-    iconImageView.pa_centerY.install() //pinCenterY()
-    iconLeadingConstraint =  iconImageView.pa_leading.eq(0).install() // pinLeading(0)
+    iconImageView.pa_centerY.install() //pa_centerY.install()
+    iconLeadingConstraint =  iconImageView.pa_leading.eq(0).install() // pa_leading.eq(0)
     
     textLabel.pa_bottom.eq(0).install()
     iconPaddingConstraint =  textLabel.pa_after(iconImageView, offset: 6).install() // textLabel.pinLeadingToSibling(iconImageView, margin: 6)

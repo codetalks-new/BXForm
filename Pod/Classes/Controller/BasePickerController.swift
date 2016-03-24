@@ -76,7 +76,7 @@ public class BasePickerController: UIViewController {
     confirmBar.setContentCompressionResistancePriority(900, forAxis: .Vertical)
     pickerView.pac_horizontal(0) //pinHorizontal(0)
     pickerView.clipsToBounds = true
-    confirmBar.pa_height.eq(44).install() // pinHeight(44)
+    confirmBar.pa_height.eq(44).install() // pa_height.eq(44)
     confirmBar.pac_horizontal(0)
     
     dividerView.pa_height.eq(1).install()
@@ -84,14 +84,14 @@ public class BasePickerController: UIViewController {
     
     if confirmBarOnTop{
       confirmBar.pa_below(topLayoutGuide).install()
-      pickerView.pa_below(confirmBar, offset: 0)
-      pickerView.pa_above(bottomLayoutGuide)
-      dividerView.pa_below(confirmBar, offset: 0)
+      pickerView.pa_below(confirmBar, offset: 0).install()
+      pickerView.pa_above(bottomLayoutGuide).install()
+      dividerView.pa_below(confirmBar, offset: 0).install()
     }else{
-      confirmBar.pa_above(bottomLayoutGuide)
-      pickerView.pa_above(confirmBar, offset: 0)
-      pickerView.pa_below(topLayoutGuide)
-      dividerView.pa_above(confirmBar, offset: 0)
+      confirmBar.pa_above(bottomLayoutGuide).install()
+      pickerView.pa_above(confirmBar, offset: 0).install()
+      pickerView.pa_below(topLayoutGuide).install()
+      dividerView.pa_above(confirmBar, offset: 0).install()
     }
   }
   
