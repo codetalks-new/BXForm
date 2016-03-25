@@ -13,7 +13,7 @@ import BXModel
 
 public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: UITableViewController {
     public private(set) var options:[T] = []
-    public let adapter : SimpleTableViewAdapter<T> = SimpleTableViewAdapter<T>()
+    public let adapter : SimpleTableViewAdapter<T> = SimpleTableViewAdapter<T>(cellStyle:.Default)
     public private(set) var selectedItems :Set<T> = []
     public var completionHandler : ( (Set<T>) -> Void )?
     public var onSelectOption:(T -> Void)?
@@ -37,16 +37,17 @@ public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: 
     adapter.updateItems(options)
   }
   
-  public func setInitialSelectedItems(items:[T]){
+  public func setInitialSelectedItems<S:SequenceType where S.Generator.Element == T>(items:S){
     selectedItems.removeAll()
     selectedItems.unionInPlace(items)
   }
  
   
   public var selectAllButton:UIBarButtonItem?
-  
+  private var originalToolbarHidden: Bool?
   public override func loadView() {
     super.loadView()
+    originalToolbarHidden = navigationController?.toolbarHidden
     if showSelectToolbar{
       navigationController?.toolbarHidden = false
       navigationController?.toolbar.tintColor = FormColors.primaryColor
@@ -121,6 +122,13 @@ public class MultipleSelectViewController<T:BXBasicItemAware where T:Hashable>: 
           selectDone(cell)
         }
     }
+  
+  public override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    if let state = originalToolbarHidden{
+      navigationController?.setToolbarHidden(state, animated: true)
+    }
+  }
 
   public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return CGFloat.min
