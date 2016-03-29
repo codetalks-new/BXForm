@@ -41,11 +41,14 @@ public class CheckboxButton: IconButton {
   
   @IBAction func _onTap(sender:AnyObject){
     selected = !selected
+    checkedStateChangedCallback?(selected)
   }
   
   public func toggle(){
     selected = !selected
   }
+  
+  public var checkedStateChangedCallback: ( Bool -> Void )?
   
   
 }
