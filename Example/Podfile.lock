@@ -1,5 +1,5 @@
 PODS:
-  - BXForm (0.2.0):
+  - BXForm (0.2.7):
     - BXiOSUtils
     - BXModel
     - PinAuto
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BXForm: abbd6e8232a7ab494b63d48fd7021c7732942245
+  BXForm: 280722f03fc76c1f4c692bbadd928846360ea57b
   BXiOSUtils: f72aeb448cba1c44da93566fb9040913e03f2a80
   BXModel: dd06e85b7ca3f5a7415f992023cdf984a292bd56
   PinAuto: 45f7dbc894aa5bfa7c9c90f07856b8dff3046e6c

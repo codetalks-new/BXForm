@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXForm"
-  s.version          = "0.2.6"
+  s.version          = "0.2.7"
   s.summary          = "BXForm is a Collection of Custom UI Widget and Custom Controller "
 
 # This description is used to generate tags and improve search results.
@@ -30,9 +30,9 @@ BXForm is a Collection of Custom UI Widget and Custom Controller ,Based on BXMod
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'BXForm' => ['Pod/Assets/*.png']
-  }
+  #s.resource_bundles = {
+    #'BXForm' => ['Pod/Assets/*.png']
+  #}
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
