@@ -44,7 +44,7 @@ public class GridView:UIView{
     relayout()
   }
   
-  
+  public var isFillEqually = false
   
   public var showDividerMiddle = false{
     didSet{
@@ -112,7 +112,7 @@ public class GridView:UIView{
     
     var centerXmultiple = xMultiple * 0.5
     var centerYmultiple = yMultiple * 0.5
-    
+    let maxWidth = maxChildViewWidth
     for childView in childViews{
       
       let yConstraint = NSLayoutConstraint(item: childView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: centerYmultiple * 2, constant: 0)
@@ -121,6 +121,11 @@ public class GridView:UIView{
       
       let xConstraint = NSLayoutConstraint(item: childView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier:centerXmultiple * 2, constant: 0)
       addConstraint(xConstraint)
+     
+      if maxWidth > 1{
+        // 如果小于1说明可能是在初始时还没有 layout 的宽度信息.所以暂不处理.
+        childView.pa_width.lte(maxWidth).withHighPriority.install()
+      }
       
       col += 1
       if col < maxColCount{

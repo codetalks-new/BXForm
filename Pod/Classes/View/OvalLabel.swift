@@ -10,6 +10,7 @@ import UIKit
 
 public class OvalLabel:UILabel{
   public var horizontalPadding:CGFloat = 4
+  public var verticalPadding:CGFloat = 4
   
   public var outlineStyle = BXOutlineStyle.Oval{
     didSet{
@@ -51,6 +52,6 @@ public class OvalLabel:UILabel{
   
   public override func intrinsicContentSize() -> CGSize {
     let size = super.intrinsicContentSize()
-    return CGSize(width: size.width + horizontalPadding, height: size.height + horizontalPadding)
+    return CGSize(width: size.width + horizontalPadding * 2, height: size.height + verticalPadding * 2)
   }
 }
