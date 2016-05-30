@@ -48,7 +48,7 @@ public class PrimaryButtonCell : StaticTableViewCell{
       return primaryButtonLeading.constant
     }set{
       primaryButtonLeading.constant = newValue
-      primaryButtonTrailing.constant = newValue
+      primaryButtonTrailing.constant = -newValue
     }
   }
   
@@ -69,7 +69,7 @@ public class PrimaryButtonCell : StaticTableViewCell{
   }
  
   public func commonInit(){
-    frame = CGRect(x: 0, y: 0, width: 320, height: 160)
+    frame = CGRect(x: 0, y: 0, width:screenWidth - 30, height: 160)
     for childView in allOutlets{
       addSubview(childView)
       childView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,8 +81,8 @@ public class PrimaryButtonCell : StaticTableViewCell{
   
   func installConstaints(){
     primaryButtonHeight = primaryButton.pa_height.eq(50).install()
-    primaryButtonTrailing =  primaryButton.pa_trailing.eq(dp2dp(42)).install()
-    primaryButtonLeading =  primaryButton.pa_leading.eq(dp2dp(42)).install()
+    primaryButtonTrailing =  primaryButton.pa_trailing.eq(15).install()
+    primaryButtonLeading =  primaryButton.pa_leading.eq(15).install()
     buttonTop =  primaryButton.pa_top.eq(50).install()
     
     spanButton.pa_before(primaryButton, offset: 0).install()  // pinTrailingEqualWithSibling(primaryButton)

@@ -63,3 +63,9 @@ public class BasicInputCell : StaticTableViewCell{
   }
 }
 
+extension BasicInputCell{
+  public var inputText:String{
+    return textField.text?.trimmed() ?? ""
+  }
+}
+

@@ -6,23 +6,24 @@
 import UIKit
 import BXModel
 
-class GapCell : StaticTableViewCell{
+public class GapCell : StaticTableViewCell{
   
   
-  convenience init() {
+  public convenience init() {
     self.init(height:10)
   }
   
-  convenience init(height:CGFloat) {
+  public convenience init(height:CGFloat) {
     self.init(style: .Default, reuseIdentifier: "GapCellCell")
     staticHeight = height
   }
-  override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+  
+  public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     commonInit()
   }
   
-  override func awakeFromNib() {
+  public override func awakeFromNib() {
     super.awakeFromNib()
     commonInit()
   }
@@ -30,7 +31,8 @@ class GapCell : StaticTableViewCell{
   var allOutlets :[UIView]{
     return []
   }
-  required init?(coder aDecoder: NSCoder) {
+  
+  public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   

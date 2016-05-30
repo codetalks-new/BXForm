@@ -41,9 +41,13 @@ public class ExpandableTextView: UITextView {
     override public var contentSize: CGSize {
         didSet {
             self.invalidateIntrinsicContentSize()
+            self.onContentSizeChangedCallback?(contentSize)
             self.layoutIfNeeded() // needed?
         }
     }
+  
+    public var onContentSizeChangedCallback:( CGSize -> Void )?
+    public var onTextDidChangeCallback: (String -> Void)?
 
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -98,6 +102,7 @@ public class ExpandableTextView: UITextView {
     func textDidChange() {
         self.updatePlaceholderVisibility()
         self.scrollToCaret()
+        onTextDidChangeCallback?(text)
     }
 
     private func scrollToCaret() {
