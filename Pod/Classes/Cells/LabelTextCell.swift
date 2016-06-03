@@ -113,7 +113,8 @@ public class LabelTextCell : StaticTableViewCell{
   
 
   public var inputText:String{
-    return inputTextField.text?.trimmed() ?? ""
+    get{ return inputTextField.text?.trimmed() ?? "" }
+    set{ inputTextField.text = newValue }
   }
 }
 

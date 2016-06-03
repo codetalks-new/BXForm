@@ -65,7 +65,8 @@ public class BasicInputCell : StaticTableViewCell{
 
 extension BasicInputCell{
   public var inputText:String{
-    return textField.text?.trimmed() ?? ""
+    get{ return textField.text?.trimmed() ?? "" }
+    set{ textField.text = newValue }
   }
 }
 
