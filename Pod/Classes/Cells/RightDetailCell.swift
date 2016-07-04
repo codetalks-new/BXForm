@@ -25,5 +25,6 @@ public class RightDetailCell:StaticTableViewCell{
   
   public func commonInit(){
       accessoryType = .DisclosureIndicator
+      textLabel?.textColor = FormColors.primaryTextColor
   }
 }

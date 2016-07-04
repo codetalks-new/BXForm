@@ -71,7 +71,10 @@ public class SelectPickerController<T:CustomStringConvertible where T:Equatable>
   }
   
  
-  func optionAtRow(row:Int) -> T{
+  func optionAtRow(row:Int) -> T?{
+    if options.count <= row  || row < 0{
+      return nil
+    }
     return options[row]
   }
   
@@ -91,7 +94,10 @@ public class SelectPickerController<T:CustomStringConvertible where T:Equatable>
   }
   
   public func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-    let title = optionAtRow(row).description
+    guard let option = optionAtRow(row) else{
+      return nil
+    }
+    let title = option.description
     let attributedText = NSAttributedString(string: title, attributes: [
       NSForegroundColorAttributeName:textColor,
       NSFontAttributeName:font
@@ -101,9 +107,13 @@ public class SelectPickerController<T:CustomStringConvertible where T:Equatable>
 
   // MARK: Base Controller
   override public func onPickDone() {
+    if options.isEmpty{
+      return
+    }
     let selectedRow = picker.selectedRowInComponent(0)
-    let option = optionAtRow(selectedRow)
-    onSelectOption?(option)
+    if let option = optionAtRow(selectedRow){
+      onSelectOption?(option)
+    }
   }
   
 }

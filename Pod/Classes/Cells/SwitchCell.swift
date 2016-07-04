@@ -18,7 +18,7 @@ public class SwitchCell : StaticTableViewCell,BXBindable{
   
   
   public convenience init() {
-    self.init(style: .Default, reuseIdentifier: "SwitchCellCell")
+    self.init(style: .Value1, reuseIdentifier: "SwitchCellCell")
   }
   public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,5 +64,10 @@ public class SwitchCell : StaticTableViewCell,BXBindable{
   
   func setupAttrs(){
     backgroundColor = .whiteColor()
+  }
+  
+  public var on:Bool{
+    get{ return toggleSwitch.on }
+    set{ toggleSwitch.on = newValue }
   }
 }

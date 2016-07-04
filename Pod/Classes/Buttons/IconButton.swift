@@ -7,7 +7,12 @@
 import UIKit
 
 public class IconButton:UIButton{
-  public var iconPadding = FormMetrics.iconPadding
+  public var iconPadding = FormMetrics.iconPadding{
+    didSet{
+      titleEdgeInsets = UIEdgeInsets(top: 0, left: icon == nil ? 0: iconPadding, bottom: 0, right: 0)
+      invalidateIntrinsicContentSize()
+    }
+  }
   
   public var cornerRadius:CGFloat = 4.0 {
     didSet{

@@ -91,6 +91,7 @@ public class BasicTextInputCell : StaticTableViewCell{
   }
   
   func setupAttrs(){
+    textView.textContainerInset = UIEdgeInsetsZero
     labelLabel.textColor = FormColors.primaryTextColor
     labelLabel.font = UIFont.systemFontOfSize(16)
     labelLabel.textAlignment = .Left
