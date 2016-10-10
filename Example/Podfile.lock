@@ -1,13 +1,17 @@
 PODS:
-  - BXForm (0.2.8):
-    - BXiOSUtils
-    - BXModel
-    - PinAuto
-  - BXiOSUtils (0.1.6)
-  - BXModel (0.2.1):
-    - SwiftyJSON
-  - PinAuto (1.4)
-  - SwiftyJSON (2.3.2)
+  - BXForm (1.0.0):
+    - BXiOSUtils (~> 1.0)
+    - BXModel (~> 1.0)
+    - Cent (~> 6.0)
+    - PinAuto (~> 2.0)
+  - BXiOSUtils (1.0.0)
+  - BXModel (1.0.1):
+    - SwiftyJSON (~> 3.1.1)
+  - Cent (6.0.1):
+    - Dollar (~> 6.0.0)
+  - Dollar (6.0.0)
+  - PinAuto (2.0)
+  - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - BXForm (from `../`)
@@ -17,12 +21,14 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BXForm: d1ff4bcdc280c381d91754eb4395fa5150e217e2
-  BXiOSUtils: f72aeb448cba1c44da93566fb9040913e03f2a80
-  BXModel: dd06e85b7ca3f5a7415f992023cdf984a292bd56
-  PinAuto: 45f7dbc894aa5bfa7c9c90f07856b8dff3046e6c
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  BXForm: 19fbe8429769a9e4924963cbd33ea32980e0012e
+  BXiOSUtils: 7218b6016948a53abe4efe05b845ea94c4da566e
+  BXModel: 3e62bb93e8813bdc614413ec8c5b612971181494
+  Cent: a9a45d7823ec2a60284e21c93afdc3be70db007a
+  Dollar: 6e69123e0901307d67a416dac70aeec56243a6e0
+  PinAuto: c17b09abc2710d60f523f397890bca0572d489e3
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
 PODFILE CHECKSUM: d8cfadb9a83149467cca979835ca63a0ad60fde6
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.0.rc.2

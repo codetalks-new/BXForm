@@ -16,12 +16,12 @@ import BXForm
 
 //LabelTextCell:stc
 
-public class LabelTextCell : StaticTableViewCell{
-  public let labelLabel = UILabel(frame:CGRectZero)
-  public let inputTextField = UITextField(frame:CGRectZero)
+open class LabelTextCell : StaticTableViewCell{
+  open let labelLabel = UILabel(frame:CGRect.zero)
+  open let inputTextField = UITextField(frame:CGRect.zero)
   
   public convenience init() {
-    self.init(style: .Default, reuseIdentifier: "AbelTextCellCell")
+    self.init(style: .default, reuseIdentifier: "AbelTextCellCell")
   }
   
   public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -31,17 +31,17 @@ public class LabelTextCell : StaticTableViewCell{
   
   
   
-  public func bind(label label:String,text:String){
+  open func bind(label:String,text:String){
     labelLabel.text  = label
     inputTextField.text  = text
   }
   
-  public func bind(label label:String,placeholder:String){
+  open func bind(label:String,placeholder:String){
     labelLabel.text  = label
     inputTextField.placeholder  = placeholder
   }
   
-  public override func awakeFromNib() {
+  open override func awakeFromNib() {
     super.awakeFromNib()
     commonInit()
   }
@@ -70,27 +70,27 @@ public class LabelTextCell : StaticTableViewCell{
     
   }
   
-  public var paddingLeft:CGFloat = 15{
+  open var paddingLeft:CGFloat = 15{
     didSet{
       paddingLeftConstraint?.constant = paddingLeft
     }
   }
   
-  public var paddingRight:CGFloat = 15{
+  open var paddingRight:CGFloat = 15{
     didSet{
       paddingRightConstraint?.constant = paddingRight
     }
   }
   
-  public var labelWidth:CGFloat = 68{
+  open var labelWidth:CGFloat = 68{
     didSet{
       labelWidthConstraint?.constant = labelWidth
     }
   }
   
-  private var paddingLeftConstraint:NSLayoutConstraint?
-  private var paddingRightConstraint:NSLayoutConstraint?
-  private var labelWidthConstraint:NSLayoutConstraint?
+  fileprivate var paddingLeftConstraint:NSLayoutConstraint?
+  fileprivate var paddingRightConstraint:NSLayoutConstraint?
+  fileprivate var labelWidthConstraint:NSLayoutConstraint?
   
   func installConstaints(){
     labelLabel.pa_centerY.install()
@@ -105,14 +105,14 @@ public class LabelTextCell : StaticTableViewCell{
   
   func setupAttrs(){
     labelLabel.textColor = FormColors.primaryTextColor
-    labelLabel.font = UIFont.systemFontOfSize(15)
+    labelLabel.font = UIFont.systemFont(ofSize: 15)
     
     
     
   }
   
 
-  public var inputText:String{
+  open var inputText:String{
     get{ return inputTextField.text?.trimmed() ?? "" }
     set{ inputTextField.text = newValue }
   }

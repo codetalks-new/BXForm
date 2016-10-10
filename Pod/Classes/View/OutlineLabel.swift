@@ -8,25 +8,25 @@
 
 import UIKit
 
-public class OutlineLabel:PaddingLabel{
+open class OutlineLabel:PaddingLabel{
   
-  public var borderColor:UIColor = UIColor(hex: 0xe0e0e0){
+  open var borderColor:UIColor = UIColor(hex: 0xe0e0e0){
     didSet{
-      layer.borderColor = borderColor.CGColor
+      layer.borderColor = borderColor.cgColor
     }
   }
   
-  public var borderWidth:CGFloat = 0.5{
+  open var borderWidth:CGFloat = 0.5{
     didSet{
       layer.borderWidth = borderWidth
     }
   }
   
   
-  public override func layoutSubviews() {
+  open override func layoutSubviews() {
     super.layoutSubviews()
     layer.borderWidth = borderWidth
-    layer.borderColor = borderColor.CGColor
+    layer.borderColor = borderColor.cgColor
     clipsToBounds = true
   }
 }

@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXForm"
-  s.version          = "0.3.0"
-  s.summary          = "BXForm is a Collection of Custom UI Widget and Custom Controller "
+  s.version          = "1.0.0"
+  s.summary          = "BXForm is a Collection of Custom UI Widget and Custom Controller, now support Swift 3"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -37,9 +37,9 @@ BXForm is a Collection of Custom UI Widget and Custom Controller ,Based on BXMod
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'BXModel'
-  s.dependency 'PinAuto'
-  s.dependency 'BXiOSUtils'
-  s.dependency 'Cent'
+  s.dependency 'BXModel', '~>1.0'
+  s.dependency 'PinAuto', '~>2.0'
+  s.dependency 'BXiOSUtils', '~>1.0'
+  s.dependency 'Cent','~>6.0'
 
 end

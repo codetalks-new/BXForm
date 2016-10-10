@@ -13,21 +13,21 @@ import PinAuto
 import Cent
 
 
-public class BasicTextInputCell : StaticTableViewCell{
-  public let labelLabel = UILabel(frame:CGRectZero)
-  public let textView = ExpandableTextView(frame:CGRectZero)
-  public let countLabel = UILabel(frame:CGRectZero)
+open class BasicTextInputCell : StaticTableViewCell{
+  open let labelLabel = UILabel(frame:CGRect.zero)
+  open let textView = ExpandableTextView(frame:CGRect.zero)
+  open let countLabel = UILabel(frame:CGRect.zero)
   
   
   convenience init() {
-    self.init(style: .Default, reuseIdentifier: "BasicTextInputCellCell")
+    self.init(style: .default, reuseIdentifier: "BasicTextInputCellCell")
   }
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     commonInit()
   }
   
-  public override func awakeFromNib() {
+  open override func awakeFromNib() {
     super.awakeFromNib()
     commonInit()
   }
@@ -46,15 +46,15 @@ public class BasicTextInputCell : StaticTableViewCell{
   
 
   
-  public func bindLabel(label:String){
+  open func bindLabel(_ label:String){
     labelLabel.text = label
-    labelLabel.hidden = label.isEmpty
+    labelLabel.isHidden = label.isEmpty
     if label.isEmpty{
-      textTopConstraint?.active = true
-      textBelowLabelConstraint?.active = false
+      textTopConstraint?.isActive = true
+      textBelowLabelConstraint?.isActive = false
     }else{
-      textTopConstraint?.active = false
-      textBelowLabelConstraint?.active = true
+      textTopConstraint?.isActive = false
+      textBelowLabelConstraint?.isActive = true
     }
   }
   
@@ -79,29 +79,29 @@ public class BasicTextInputCell : StaticTableViewCell{
     textView.pac_horizontal(15)
     
     textBelowLabelConstraint =  textView.pa_below(labelLabel, offset: 8).install()
-    textBelowLabelConstraint?.active = false
+    textBelowLabelConstraint?.isActive = false
     textTopConstraint = textView.pa_top.eq(12).install()
     
     countLabel.pa_below(textView, offset: 8).install()
     countLabel.pa_trailing.eq(15).install()
     countLabel.pa_bottom.eq(10).install()
     
-    textView.setContentHuggingPriority(200, forAxis: .Vertical)
+    textView.setContentHuggingPriority(200, for: .vertical)
     
   }
   
   func setupAttrs(){
-    textView.textContainerInset = UIEdgeInsetsZero
+    textView.textContainerInset = UIEdgeInsets.zero
     labelLabel.textColor = FormColors.primaryTextColor
-    labelLabel.font = UIFont.systemFontOfSize(16)
-    labelLabel.textAlignment = .Left
+    labelLabel.font = UIFont.systemFont(ofSize: 16)
+    labelLabel.textAlignment = .left
     
     textView.setTextPlaceholderColor(FormColors.tertiaryTextColor)
-    textView.setTextPlaceholderFont(UIFont.systemFontOfSize(15))
-    textView.font = UIFont.systemFontOfSize(15)
+    textView.setTextPlaceholderFont(UIFont.systemFont(ofSize: 15))
+    textView.font = UIFont.systemFont(ofSize: 15)
     
     countLabel.textColor = FormColors.hintTextColor
-    countLabel.font = UIFont.systemFontOfSize(14)
+    countLabel.font = UIFont.systemFont(ofSize: 14)
     
     textView.delegate = self
     
@@ -111,15 +111,15 @@ public class BasicTextInputCell : StaticTableViewCell{
     countLabel.text = "最多\(inputMaxLength)字"
   }
   
-  public func setTextPlaceholder(placeholder:String){
+  open func setTextPlaceholder(_ placeholder:String){
     textView.setTextPlaceholder(placeholder)
   }
   
-  public var inputText:String{
+  open var inputText:String{
     return textView.text ?? ""
   }
   
-  public var inputMaxLength = 100{
+  open var inputMaxLength = 100{
     didSet{
       if inputText.isEmpty{
         countLabel.text = "最多\(inputMaxLength)字"
@@ -129,15 +129,15 @@ public class BasicTextInputCell : StaticTableViewCell{
     }
   }
   
-  func createCountDownAttributedText(text:String) -> NSAttributedString{
+  func createCountDownAttributedText(_ text:String) -> NSAttributedString{
     let count = text.strip().length
     if count <= inputMaxLength{
       return NSAttributedString(string: "\(count)/\(inputMaxLength)")
     }else{
       let attributedText =  NSMutableAttributedString(string:"\(count)",attributes:[
-        NSForegroundColorAttributeName:UIColor.redColor()
+        NSForegroundColorAttributeName:UIColor.red
         ])
-      attributedText.appendAttributedString(NSAttributedString(string: "/ \(inputMaxLength)"))
+      attributedText.append(NSAttributedString(string: "/ \(inputMaxLength)"))
       return attributedText
     }
   }
@@ -147,7 +147,7 @@ public class BasicTextInputCell : StaticTableViewCell{
 
 extension BasicTextInputCell: UITextViewDelegate{
   
-  public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+  public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     //NSLog("\(#function) \(range) \(text)")
     let content = textView.text ?? ""
     let currentCount = content.characters.count

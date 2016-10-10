@@ -9,10 +9,10 @@
 import Foundation
 
 public enum FMFieldValueType{
-  case Text(minLength:Int,maxLength:Int)
+  case text(minLength:Int,maxLength:Int)
 }
 
-public class FMField{
+open class FMField{
   
 }
 

@@ -6,7 +6,7 @@
 import UIKit
 import BXModel
 
-public class GapCell : StaticTableViewCell{
+open class GapCell : StaticTableViewCell{
   
   
   public convenience init() {
@@ -14,7 +14,7 @@ public class GapCell : StaticTableViewCell{
   }
   
   public convenience init(height:CGFloat) {
-    self.init(style: .Default, reuseIdentifier: "GapCellCell")
+    self.init(style: .default, reuseIdentifier: "GapCellCell")
     staticHeight = height
   }
   
@@ -23,7 +23,7 @@ public class GapCell : StaticTableViewCell{
     commonInit()
   }
   
-  public override func awakeFromNib() {
+  open override func awakeFromNib() {
     super.awakeFromNib()
     commonInit()
   }

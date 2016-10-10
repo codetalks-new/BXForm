@@ -4,7 +4,3 @@ use_frameworks!
 target 'BXForm_Example' do
   pod "BXForm", :path => "../"
 end
-
-target 'BXForm_Tests' do
-  pod "BXForm", :path => "../"
-end

@@ -19,10 +19,10 @@ import BXForm
 //icon[x,y]:i
 //title[x,bl4@icon](f15,cpt)
 
-public class VerticalIconButton : UIControl  {
-  public var iconPadding = FormMetrics.iconPadding
-  public let iconImageView = UIImageView(frame:CGRect.zero)
-  public let titleLabel = UILabel(frame:CGRect.zero)
+open class VerticalIconButton : UIControl  {
+  open var iconPadding = FormMetrics.iconPadding
+  open let iconImageView = UIImageView(frame:CGRect.zero)
+  open let titleLabel = UILabel(frame:CGRect.zero)
   
   
   public override init(frame: CGRect) {
@@ -31,7 +31,7 @@ public class VerticalIconButton : UIControl  {
   }
   
   
-  public override func awakeFromNib() {
+  open override func awakeFromNib() {
     super.awakeFromNib()
     commonInit()
   }
@@ -71,11 +71,11 @@ public class VerticalIconButton : UIControl  {
   
   func setupAttrs(){
     titleLabel.textColor = FormColors.primaryTextColor
-    titleLabel.font = UIFont.systemFontOfSize(15)
+    titleLabel.font = UIFont.systemFont(ofSize: 15)
     
   }
   
-  public var icon:UIImage?{
+  open var icon:UIImage?{
     set{
       iconImageView.image = newValue
     }get{
@@ -83,13 +83,13 @@ public class VerticalIconButton : UIControl  {
     }
   }
   
-  public class override func requiresConstraintBasedLayout() -> Bool{
+  open class override var requiresConstraintBasedLayout : Bool{
     return true
   }
   
-  public override func intrinsicContentSize() -> CGSize {
-    let iconSize = iconImageView.intrinsicContentSize()
-    let titleSize = titleLabel.intrinsicContentSize()
+  open override var intrinsicContentSize : CGSize {
+    let iconSize = iconImageView.intrinsicContentSize
+    let titleSize = titleLabel.intrinsicContentSize
     let width = max(iconSize.width, titleSize.width)
     let height = iconSize.height + iconPadding + titleSize.height
     
