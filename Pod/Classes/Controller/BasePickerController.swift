@@ -138,7 +138,7 @@ open class BasePickerController: UIViewController {
 // MARK: UIViewControllerTransitioningDelegate
 extension BasePickerController:UIViewControllerTransitioningDelegate {
   public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    let presentation = ActionSheetPresentationController(presentedViewController: presented, presenting: presenting!)
+    let presentation = ActionSheetPresentationController(presentedViewController: presented, presenting: presenting)
     return presentation
   }
 }

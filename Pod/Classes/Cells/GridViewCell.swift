@@ -13,7 +13,6 @@ import UIKit
 import BXModel
 import SwiftyJSON
 import BXiOSUtils
-import BXForm
 
 //-LinearGridCell:stc
 //gridView[e0]:v

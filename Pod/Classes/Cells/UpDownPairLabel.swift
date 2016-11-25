@@ -9,7 +9,6 @@ import UIKit
 import BXModel
 import SwiftyJSON
 import BXiOSUtils
-import BXForm
 
 //-UpDownPairLabel:v
 //top[x,t0](f11,ca)

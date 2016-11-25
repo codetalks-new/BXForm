@@ -13,7 +13,6 @@ import UIKit
 import BXModel
 import SwiftyJSON
 import BXiOSUtils
-import BXForm
 
 //-VerticalIconButton(al,nobind):ct
 //icon[x,y]:i

@@ -50,10 +50,25 @@ open class BasicInputCell : StaticTableViewCell{
     
   }
   
+  open var paddingLeft:CGFloat = FormMetrics.cellPaddingLeft{
+    didSet{
+      paddingLeftConstraint?.constant = paddingLeft
+    }
+  }
+  
+  open var paddingRight:CGFloat = FormMetrics.cellPaddingRight{
+    didSet{
+      paddingRightConstraint?.constant = paddingRight
+    }
+  }
+  
+  fileprivate var paddingLeftConstraint:NSLayoutConstraint?
+  fileprivate var paddingRightConstraint:NSLayoutConstraint?
+  
   open func installConstaints(){
-    textField.pa_trailing.eq(15).install() // pa_trailing.eq(15)
+    paddingLeftConstraint =  textField.pa_leading.eq(paddingLeft).install() // pa_leading.eq(15)
+    paddingRightConstraint =  textField.pa_trailing.eq(paddingRight).install() // pa_trailing.eq(15)
     textField.pa_bottom.eq(10).install() //pinBottom(10)
-    textField.pa_leading.eq(15).install() // pa_leading.eq(15)
     textField.pa_top.eq(10).install() // pa_top.eq(10)
     
   }

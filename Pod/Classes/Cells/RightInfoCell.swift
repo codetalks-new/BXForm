@@ -12,7 +12,6 @@ import UIKit
 import BXModel
 import SwiftyJSON
 import BXiOSUtils
-import BXForm
 
 
 open class RightInfoCell : StaticTableViewCell {

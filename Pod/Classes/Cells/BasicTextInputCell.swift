@@ -58,7 +58,7 @@ open class BasicTextInputCell : StaticTableViewCell{
     }
   }
   
-  func commonInit(){
+  open func commonInit(){
     staticHeight = 100
     for childView in allOutlets{
       contentView.addSubview(childView)
@@ -69,14 +69,22 @@ open class BasicTextInputCell : StaticTableViewCell{
     
   }
   
-  var textBelowLabelConstraint:NSLayoutConstraint?
-  var textTopConstraint:NSLayoutConstraint?
+  open var paddingLeft:CGFloat = FormMetrics.cellPaddingLeft{
+    didSet{
+      paddingLeftConstraint?.constant = paddingLeft
+    }
+  }
+
   
-  func installConstaints(){
+  open var textBelowLabelConstraint:NSLayoutConstraint?
+  open var textTopConstraint:NSLayoutConstraint?
+  private var paddingLeftConstraint:NSLayoutConstraint?
+  
+  open func installConstaints(){
     labelLabel.pa_top.eq(11).install()
-    labelLabel.pa_leading.eq(15).install()
+    paddingLeftConstraint = labelLabel.pa_leading.eq(FormMetrics.cellPaddingLeft).install()
     
-    textView.pac_horizontal(15)
+    textView.pac_horizontal(FormMetrics.cellPaddingLeft)
     
     textBelowLabelConstraint =  textView.pa_below(labelLabel, offset: 8).install()
     textBelowLabelConstraint?.isActive = false
@@ -90,7 +98,7 @@ open class BasicTextInputCell : StaticTableViewCell{
     
   }
   
-  func setupAttrs(){
+  open func setupAttrs(){
     textView.textContainerInset = UIEdgeInsets.zero
     labelLabel.textColor = FormColors.primaryTextColor
     labelLabel.font = UIFont.systemFont(ofSize: 16)

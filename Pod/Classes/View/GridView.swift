@@ -121,7 +121,7 @@ open class GridView:UIView{
   }
   
   func fillEqualLayout(){
-    let rows = maxRows
+    _ = maxRows
     let cols = maxColCount
     let lineWidth = dividerLineWidth
     let cellWidth = maxChildViewWidth
@@ -206,10 +206,6 @@ open class GridView:UIView{
     var startY :CGFloat = rect.minY
     var startX :CGFloat = rect.minX
     
-    var count = 0
-    let childCount = childViews.count
-    
-    var col = 1
     let ctx = UIGraphicsGetCurrentContext()
     dividerColor.setStroke()
   

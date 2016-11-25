@@ -11,7 +11,7 @@ import UIKit
 public protocol ChildPickerItem: CustomStringConvertible,Equatable{
   
 }
-public protocol ParentPickerItem: CustomStringConvertible,Equatable,Hashable{
+public protocol ParentPickerItem: CustomStringConvertible,Hashable{
 }
 
 

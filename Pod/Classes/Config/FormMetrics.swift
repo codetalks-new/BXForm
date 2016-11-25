@@ -15,5 +15,8 @@ public struct FormMetrics{
   public static var primaryFontSize : CGFloat = 15
   public static var secondaryFontSize : CGFloat = 13
   public static var tertiaryFontSize : CGFloat = 11
+  public static var cellPaddingLeft: CGFloat = 15
+  public static var cellPaddingRight: CGFloat = 15
+  public static var cellLabelWidth: CGFloat = 68
 }
 

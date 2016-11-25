@@ -1,43 +1,30 @@
 //
-//  LabelTextCell.swift
-//  Pods
+//  LabelTextViewCell.swift
 //
-//  Created by Haizhen Lee on 16/5/24.
-//
+//  Created by Haizhen Lee on 16/1/26.
 //
 
 import Foundation
-// Build for target uimodel
+
 import UIKit
 import BXModel
-import SwiftyJSON
 import BXiOSUtils
 
-//LabelTextCell:stc
+//-LabelTextViewCell:stc
+//label[w85,t15](f17,cpt)
+//_[at4@label,y,r15](f15,cst):tv
 
-open class LabelTextCell : StaticTableViewCell{
-  open let labelLabel = UILabel(frame:.zero)
-  open let inputTextField = UITextField(frame:.zero)
+open class LabelTextViewCell : StaticTableViewCell{
+  public let labelLabel = UILabel(frame:.zero)
+  public let textView = ExpandableTextView(frame:.zero)
+  
   
   public convenience init() {
-    self.init(style: .default, reuseIdentifier: "AbelTextCellCell")
+    self.init(style: .default, reuseIdentifier: "LabelTextViewCellCell")
   }
-  
   public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     commonInit()
-  }
-  
-  
-  
-  open func bind(label:String,text:String){
-    labelLabel.text  = label
-    inputTextField.text  = text
-  }
-  
-  open func bind(label:String,placeholder:String){
-    labelLabel.text  = label
-    inputTextField.placeholder  = placeholder
   }
   
   open override func awakeFromNib() {
@@ -49,25 +36,27 @@ open class LabelTextCell : StaticTableViewCell{
     super.init(coder: aDecoder)
   }
   
-  var allOutlets :[UIView]{
-    return [labelLabel,inputTextField]
+  open var allOutlets :[UIView]{
+    return [labelLabel,textView]
   }
   var allUILabelOutlets :[UILabel]{
     return [labelLabel]
   }
-  var allUITextFieldOutlets :[UITextField]{
-    return [inputTextField]
+  var allUITextViewOutlets :[UITextView]{
+    return [textView]
   }
   
-  func commonInit(){
+  open func commonInit(){
+    staticHeight = 80
     for childView in allOutlets{
-      addSubview(childView)
+      contentView.addSubview(childView)
       childView.translatesAutoresizingMaskIntoConstraints = false
     }
     installConstaints()
     setupAttrs()
     
   }
+  
   
   open var paddingLeft:CGFloat = FormMetrics.cellPaddingLeft{
     didSet{
@@ -91,35 +80,40 @@ open class LabelTextCell : StaticTableViewCell{
   fileprivate var paddingRightConstraint:NSLayoutConstraint?
   fileprivate var labelWidthConstraint:NSLayoutConstraint?
   
-  func installConstaints(){
-    labelLabel.pa_centerY.install()
-     paddingLeftConstraint = labelLabel.pa_leading.eq(paddingLeft).install()
-    labelWidthConstraint = labelLabel.pa_width.eq(labelWidth).install()
-    
-    inputTextField.pa_centerY.install()
-    paddingRightConstraint = inputTextField.pa_trailing.eq(paddingRight).install()
-    inputTextField.pa_after(labelLabel,offset:8).install()
-    
+  open func installConstaints(){
+    labelLabel.pa_top.eq(15).install()
+    paddingLeftConstraint = labelLabel.pa_leading.eq(paddingLeft).install()
+    labelWidthConstraint =  labelLabel.pa_width.eq(labelWidth).install()
+    textView.pa_below(labelLabel, offset: 4).install()
+    paddingRightConstraint =  textView.pa_trailing.eq(paddingRight).install()
+    textView.pa_after(labelLabel,offset:8).install()
+    textView.pa_bottom.eq(10).install()
   }
   
-  func setupAttrs(){
+  open func setupAttrs(){
     labelLabel.textColor = FormColors.primaryTextColor
     labelLabel.font = UIFont.systemFont(ofSize: FormMetrics.primaryFontSize)
     labelLabel.textAlignment = .right
     
-    inputTextField.textAlignment = .right
+    textView.textColor = FormColors.secondaryTextColor
+    textView.font = UIFont.systemFont(ofSize: FormMetrics.secondaryFontSize)
+    textView.setTextPlaceholderFont(textView.font!)
+    textView.setTextPlaceholderColor(FormColors.hintTextColor)
+    
+    textView.textAlignment = .left
+   
+    shouldHighlight = false
     
   }
   
-  open var label: String?{
+  public var label: String?{
     get{ return labelLabel.text }
     set{ labelLabel.text = newValue }
   }
   
-
-  open var inputText:String{
-    get{ return inputTextField.text?.trimmed() ?? "" }
-    set{ inputTextField.text = newValue }
+  public var inputText:String{
+    get{ return textView.text }
+    set{ textView.text = newValue }
   }
-}
 
+}
