@@ -18,12 +18,12 @@ public extension UIViewController{
     present(confirmController, animated: true, completion: nil)
   }
   
-  public func bx_confirm(_ message:String,closure:@escaping ( (Void) -> Void)){
+  public func bx_confirm(_ message:String,closure:(() -> Void)? = nil){
     let confirmController = ConfirmAlertController(title: nil, message: message, preferredStyle: .alert)
     confirmController.shouldShowCancelButton = false
     confirmController.onConfirmCallback = {
       sure in
-      closure()
+      closure?()
     }
     present(confirmController, animated: true, completion: nil)
   }
