@@ -11,19 +11,45 @@ import PinAuto
 // icon[l0,y]:i
 // text[l8,t0,b0](f15,cdt)
 
+public enum IconPosition{
+  case left,right,top, bottom
+  
+  public var isVerticalAlign: Bool{
+    return [.top, .bottom].contains(self)
+  }
+  
+  public var isHorizontalAlign: Bool{
+    return [.left, .right].contains(self)
+  }
+}
+
 open class IconLabel : UIView{
   open let iconImageView = UIImageView(frame:CGRect.zero)
   open let textLabel = UILabel(frame:CGRect.zero)
+  private var _iconPosition: IconPosition  = .left
+  public var iconPosition: IconPosition{
+    get{
+      return _iconPosition
+    }set{
+      _iconPosition = newValue
+      onIconPositionChanged()
+    }
+  }
   
   
-  public override init(frame: CGRect) {
-    super.init(frame: frame)
+  public init(iconPosition: IconPosition = .left) {
+    self._iconPosition = iconPosition
+    super.init(frame: .zero)
     commonInit()
   }
   
   override open func awakeFromNib() {
     super.awakeFromNib()
     commonInit()
+  }
+  
+  func onIconPositionChanged(){
+      relayout()
   }
   
   var allOutlets :[UIView]{
@@ -49,29 +75,71 @@ open class IconLabel : UIView{
     
   }
   
-
+  func relayout(){
+    for childView in allOutlets{
+      childView.removeFromSuperview()
+      addSubview(childView)
+      childView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    installConstaints()
+  }
   
-  open var iconLeadingConstraint:NSLayoutConstraint!
-  var iconPaddingConstraint:NSLayoutConstraint!
+  open var horizontalPadding:CGFloat = 4{
+    didSet{
+      relayout()
+    }
+  }
   
-  open var iconPadding : CGFloat{
-    set{
-      iconPaddingConstraint.constant = newValue
-    }get{
-      return iconPaddingConstraint.constant
+  open var verticalPadding: CGFloat = 4 {
+    didSet{
+      relayout()
+    }
+  }
+  
+  var iconPaddingConstraint:NSLayoutConstraint?
+  open var iconPadding : CGFloat = 2{
+    didSet{
+      relayout()
     }
   }
   
   func installConstaints(){
     translatesAutoresizingMaskIntoConstraints = false
+
+    if iconPosition.isVerticalAlign{
+      for view in [iconImageView, textLabel]{
+        view.pa_leading.gte(horizontalPadding).withPriority(240).install()
+        view.pa_trailing.gte(horizontalPadding).withPriority(240).install()
+      }
+      
+      iconImageView.pa_centerX.install()
+      textLabel.pa_centerX.install()
+    }else if iconPosition.isHorizontalAlign{
+      for view in [iconImageView, textLabel]{
+        view.pa_top.gte(verticalPadding).withPriority(240).install()
+        view.pa_bottom.gte(verticalPadding).withPriority(240).install()
+      }
+      textLabel.pa_centerY.install()
+    }
+    switch iconPosition {
+    case .left:
+      iconImageView.pa_leading.eq(horizontalPadding).install()
+      textLabel.pa_after(iconImageView, offset: iconPadding).install()
+      textLabel.pa_trailing.eq(horizontalPadding).install()
+    case .right:
+      iconImageView.pa_trailing.eq(horizontalPadding).install() 
+      textLabel.pa_before(iconImageView, offset: iconPadding).install()
+      textLabel.pa_leading.eq(horizontalPadding).install()
+    case .top:
+      iconImageView.pa_top.eq(verticalPadding).install()
+      textLabel.pa_below(iconImageView, offset: iconPadding).install()
+      textLabel.pa_bottom.eq(verticalPadding).install()
+    case .bottom:
+      iconImageView.pa_bottom.eq(verticalPadding).install()
+      textLabel.pa_above(iconImageView, offset: iconPadding).install()
+      textLabel.pa_top.eq(verticalPadding).install()
+    }
     
-    iconImageView.pa_centerY.install() //pa_centerY.install()
-    iconLeadingConstraint =  iconImageView.pa_leading.eq(0).install() // pa_leading.eq(0)
-    
-    textLabel.pa_bottom.eq(0).install()
-    iconPaddingConstraint =  textLabel.pa_after(iconImageView, offset: 6).install() // textLabel.pinLeadingToSibling(iconImageView, margin: 6)
-    textLabel.pa_top.eq(0).install()
-    textLabel.pa_trailing.eq(0).install()
     
   }
   
@@ -82,9 +150,16 @@ open class IconLabel : UIView{
   open override var intrinsicContentSize : CGSize {
     let iconSize = iconImageView.intrinsicContentSize
     let textSize = textLabel.intrinsicContentSize
-    let width = iconSize.width + iconPadding + textSize.width
-    let height = max(iconSize.height,textSize.height)
-    return CGSize(width: width, height: height)
+    let width:CGFloat
+    let height: CGFloat
+    if iconPosition.isHorizontalAlign{
+      width = iconSize.width + iconPadding + textSize.width
+      height = max(iconSize.height,textSize.height)
+    }else{
+      width = max(iconSize.width,textSize.width)
+      height = iconSize.height + iconPadding + textSize.height
+    }
+    return CGSize(width: width + horizontalPadding * 2, height: height + verticalPadding * 2)
   }
   
   func setupAttrs(){

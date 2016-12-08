@@ -17,9 +17,9 @@ open class CheckboxButton: IconButton {
   }
   open var uncheckedImage:UIImage?{
     set{
-      setImage(newValue, for: UIControlState())
+      setImage(newValue, for: .normal)
     }get{
-      return image(for: UIControlState())
+      return image(for: .normal)
     }
   }
   

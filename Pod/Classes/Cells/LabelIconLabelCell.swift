@@ -15,7 +15,7 @@ import BXiOSUtils
 
 open class LabelIconLabelCell : StaticTableViewCell{
   public let labelLabel = UILabel(frame:.zero)
-  public let iconLabel = IconLabel(frame: .zero)
+  public let iconLabel = IconLabel()
   
   
   public convenience init() {
