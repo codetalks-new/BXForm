@@ -206,7 +206,50 @@ open class IconLabel : UIView{
       invalidateIntrinsicContentSize()
     }
   }
+  
+  open var outlineStyle = BXOutlineStyle.none{
+    didSet{
+      updateOvalPath()
+    }
+  }
+  
+  open var cornerRadius:CGFloat = 4.0 {
+    didSet{
+      updateOvalPath()
+    }
+  }
+  
+  open lazy var maskLayer : CAShapeLayer = { [unowned self] in
+    let maskLayer = CAShapeLayer()
+    maskLayer.frame = self.frame
+    self.layer.mask = maskLayer
+    return maskLayer
+    }()
+  
+  open override func layoutSubviews() {
+    super.layoutSubviews()
+    maskLayer.frame = bounds
+    updateOvalPath()
+  }
+  
+  fileprivate func updateOvalPath(){
+    let path:UIBezierPath
+    switch outlineStyle{
+    case .rounded:
+      path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+    case .oval:
+      path = UIBezierPath(ovalIn: bounds)
+    case .semicircle:
+      path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height * 0.5)
+    case .none:
+      maskLayer.path = nil
+      return
+    }
+    maskLayer.path = path.cgPath
+  }
+
 }
+
 
 
 

@@ -12,6 +12,7 @@ public enum BXOutlineStyle:Int{
   case rounded
   case oval
   case semicircle
+  case none
 }
 
 open class OutlineButton: UIButton {
@@ -91,6 +92,10 @@ open class OutlineButton: UIButton {
       path = UIBezierPath(ovalIn: bounds)
     case .semicircle:
       path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height * 0.5)
+    case .none:
+      maskLayer.path = nil
+      outlineLayer.path = nil
+      return
     }
     maskLayer.path = path.cgPath
     outlineLayer.path = path.cgPath

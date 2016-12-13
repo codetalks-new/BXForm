@@ -46,6 +46,9 @@ open class OvalLabel:UILabel{
       path = UIBezierPath(ovalIn: bounds)
     case .semicircle:
       path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height * 0.5)
+    case .none:
+      maskLayer.path = nil
+      return
     }
     maskLayer.path = path.cgPath
   }

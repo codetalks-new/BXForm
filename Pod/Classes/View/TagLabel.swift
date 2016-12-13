@@ -64,6 +64,8 @@ open class TagLabel:UILabel{
       radius = bounds.width * 0.5
     case .semicircle:
       radius = bounds.width * 0.5
+    case .none:
+      radius = 0
     }
     
     let image = UIImage.bx_roundImage(tagColor, size: bounds.size, cornerRadius: radius)
