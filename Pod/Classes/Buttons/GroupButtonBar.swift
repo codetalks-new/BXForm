@@ -58,7 +58,7 @@ open class BaseButtonBar: UIView{
     }
   }
   
-  public func onButtonPressed(button:UIButton){
+  open func onButtonPressed(button:UIButton){
   }
   
 
