@@ -120,6 +120,7 @@ open class IconLabel : UIView{
         view.pa_bottom.gte(verticalPadding).withPriority(240).install()
       }
       textLabel.pa_centerY.install()
+      iconImageView.pa_centerY.install()
     }
     switch iconPosition {
     case .left:
