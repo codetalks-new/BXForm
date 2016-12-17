@@ -35,6 +35,7 @@ open class OvalButton:UIButton{
       path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height * 0.5)
     case .none:
       maskLayer.path = nil
+      layer.mask = nil
       return
     }
     maskLayer.path = path.cgPath
