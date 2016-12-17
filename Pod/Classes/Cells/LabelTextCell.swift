@@ -121,5 +121,10 @@ open class LabelTextCell : StaticTableViewCell{
     get{ return inputTextField.text?.trimmed() ?? "" }
     set{ inputTextField.text = newValue }
   }
+  
+  public var placeholder:String?{
+    get{ return inputTextField.placeholder }
+    set{ inputTextField.placeholder = newValue }
+  }
 }
 

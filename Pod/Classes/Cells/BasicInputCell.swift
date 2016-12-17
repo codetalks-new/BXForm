@@ -83,5 +83,10 @@ extension BasicInputCell{
     get{ return textField.text?.trimmed() ?? "" }
     set{ textField.text = newValue }
   }
+  
+  public var placeholder:String?{
+    get{ return textField.placeholder }
+    set{ textField.placeholder = newValue }
+  }
 }
 
