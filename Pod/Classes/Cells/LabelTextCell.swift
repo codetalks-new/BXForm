@@ -97,6 +97,7 @@ open class LabelTextCell : StaticTableViewCell{
     labelWidthConstraint = labelLabel.pa_width.eq(labelWidth).install()
     
     inputTextField.pa_centerY.install()
+    inputTextField.pa_height.eq(32).install()
     paddingRightConstraint = inputTextField.pa_trailing.eq(paddingRight).install()
     inputTextField.pa_after(labelLabel,offset:8).install()
     

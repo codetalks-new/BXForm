@@ -62,6 +62,7 @@ open class InputCell : StaticTableViewCell{
     label.pa_leading.eq(15).install()
     label.pa_width.eq(72).install()
     textField.pa_centerY.install()
+    textField.pa_height.eq(32).install()
     textField.pa_after(label, offset: sdp2dp(15)).install()
     textField.pa_trailing.eq(15).install()
   }

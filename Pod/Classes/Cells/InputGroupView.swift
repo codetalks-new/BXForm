@@ -97,6 +97,8 @@ open class InputGroupView : UIView{
   func installConstaints(){
     textField.pa_centerY.install()
     textField.pa_leading.eq(15).install()
+    textField.pa_height.eq(32).install()
+    
     
     if showSpanButton{
       textField.pa_before(spanButton, offset: 4).install()

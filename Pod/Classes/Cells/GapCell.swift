@@ -16,6 +16,9 @@ open class GapCell : StaticTableViewCell{
   public convenience init(height:CGFloat) {
     self.init(style: .default, reuseIdentifier: "GapCellCell")
     staticHeight = height
+    removeSeparator = true
+    bx_removeSeparator()
+    
   }
   
   public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

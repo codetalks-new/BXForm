@@ -15,9 +15,9 @@ import BXiOSUtils
 // inc[r0,y,w22,a1]:b
 
 open class StepperView : UIView{
-  public let decButton = UIButton(type:.custom)
+  public let decButton = UIButton(type:.system)
   public let valueLabel = UILabel(frame:.zero)
-  public let incButton = UIButton(type:.custom)
+  public let incButton = UIButton(type:.system)
   
   
   public var displayIntValue = true
@@ -155,9 +155,7 @@ open class StepperView : UIView{
     // 这里不方便使用 Image 所以使用 特殊字符代替.
     decButton.setTitle("－", for: .normal) // FULLWIDTH HYPHEN-MINUS
     incButton.setTitle("＋", for: .normal) // FULLWIDTH PLUS SIGN
-    decButton.setTitleColor(.blue, for: .normal)
-    incButton.setTitleColor(.blue, for: .normal)
-    valueLabel.textColor = .darkText
+    valueLabel.textColor = FormColors.primaryTextColor
     valueLabel.font = UIFont.systemFont(ofSize: FormMetrics.primaryFontSize)
     valueLabel.text = String(Int(value))
     
