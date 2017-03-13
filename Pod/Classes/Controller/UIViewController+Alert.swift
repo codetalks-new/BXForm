@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIViewController{
-  public func bx_prompt(_ message:String,handler:@escaping ((Bool) -> Void)){
+  public func bx_prompt(_ message:String, handler:@escaping ((Bool) -> Void)){
     let confirmController = ConfirmAlertController(title: nil, message: message, preferredStyle: .alert)
     confirmController.onConfirmCallback = {
       sure in

@@ -59,7 +59,7 @@ open class BasicTextInputCell : StaticTableViewCell{
   }
   
   open func commonInit(){
-    staticHeight = 100
+    staticHeight = 120
     for childView in allOutlets{
       contentView.addSubview(childView)
       childView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +89,7 @@ open class BasicTextInputCell : StaticTableViewCell{
     textBelowLabelConstraint =  textView.pa_below(labelLabel, offset: 8).install()
     textBelowLabelConstraint?.isActive = false
     textTopConstraint = textView.pa_top.eq(12).install()
+    textTopConstraint?.isActive = false
     
     countLabel.pa_below(textView, offset: 8).install()
     countLabel.pa_trailing.eq(15).install()

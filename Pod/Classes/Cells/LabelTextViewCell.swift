@@ -81,10 +81,10 @@ open class LabelTextViewCell : StaticTableViewCell{
   fileprivate var labelWidthConstraint:NSLayoutConstraint?
   
   open func installConstaints(){
-    labelLabel.pa_top.eq(15).install()
+    labelLabel.pa_centerY.eq(21).install()
     paddingLeftConstraint = labelLabel.pa_leading.eq(paddingLeft).install()
     labelWidthConstraint =  labelLabel.pa_width.eq(labelWidth).install()
-    textView.pa_below(labelLabel, offset: 4).install()
+    textView.pa_top.eq(8).install()
     paddingRightConstraint =  textView.pa_trailing.eq(paddingRight).install()
     textView.pa_after(labelLabel,offset:8).install()
     textView.pa_bottom.eq(10).install()
