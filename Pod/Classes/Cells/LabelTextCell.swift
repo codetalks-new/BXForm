@@ -93,12 +93,12 @@ open class LabelTextCell : StaticTableViewCell{
   
   func installConstaints(){
     labelLabel.pa_centerY.install()
-     paddingLeftConstraint = labelLabel.pa_leading.eq(paddingLeft).install()
+     paddingLeftConstraint = labelLabel.pa_leadingMargin.eq(paddingLeft).install()
     labelWidthConstraint = labelLabel.pa_width.eq(labelWidth).install()
     
     inputTextField.pa_centerY.install()
     inputTextField.pa_height.eq(32).install()
-    paddingRightConstraint = inputTextField.pa_trailing.eq(paddingRight).install()
+    paddingRightConstraint = inputTextField.pa_trailingMargin.eq(paddingRight).install()
     inputTextField.pa_after(labelLabel,offset:8).install()
     
   }

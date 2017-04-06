@@ -85,12 +85,12 @@ open class LabelLogoCell : StaticTableViewCell{
   
   open func installConstaints(){
     labelLabel.pa_centerY.install()
-    paddingLeftConstraint =  labelLabel.pa_leading.eq(paddingLeft).install()
+    paddingLeftConstraint =  labelLabel.pa_leadingMargin.eq(paddingLeft).install()
     labelWidthConstraint = labelLabel.pa_width.eq(labelWidth).install()
    
     logoImageView.pa_aspectRatio(1.0).install()
     logoWidthConstraint =  logoImageView.pa_width.eq(logoWidth).install()
-    paddingRightConstraint =  logoImageView.pa_trailing.eq(paddingRight).install()
+    paddingRightConstraint =  logoImageView.pa_trailingMargin.eq(paddingRight).install()
   }
   
   open func setupAttrs(){

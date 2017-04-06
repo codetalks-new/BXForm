@@ -59,9 +59,9 @@ open class LoginButtonCell : StaticTableViewCell{
   
   open func installConstaints(){
     loginButton.pa_height.eq(50).install()
-    loginButton.pa_trailing.eq(10).install()
+    loginButton.pa_trailingMargin.eq(FormMetrics.cellPaddingLeft).install()
     loginButton.pa_top.eq(5).install()
-    loginButton.pa_leading.eq(10).install()
+    loginButton.pa_leadingMargin.eq(FormMetrics.cellPaddingRight).install()
     regButton.pa_below(loginButton,offset:14).install()
     regButton.pa_leading.to(loginButton).offset(10).install()
     resetButton.pa_centerY.to(regButton).install()

@@ -53,7 +53,8 @@ open class RadioButtonCell : UICollectionViewCell,BXBindable,UICollectionViewDel
   }
   
   func installConstaints(){
-    radioButton.pac_edge(UIEdgeInsets(top: 0, left: 0, bottom: 0, right:0 ))
+    radioButton.pac_horizontalMargin(FormMetrics.cellPaddingLeft)
+    radioButton.pac_vertical(0)
   }
   
   func setupAttrs(){

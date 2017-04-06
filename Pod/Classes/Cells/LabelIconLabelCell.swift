@@ -79,11 +79,11 @@ open class LabelIconLabelCell : StaticTableViewCell{
   
   open func installConstaints(){
     labelLabel.pa_centerY.install()
-    paddingLeftConstraint =  labelLabel.pa_leading.eq(paddingLeft).install()
+    paddingLeftConstraint =  labelLabel.pa_leadingMargin.eq(paddingLeft).install()
     labelWidthConstraint = labelLabel.pa_width.eq(labelWidth).install()
     
     iconLabel.pa_centerY.install()
-    paddingRightConstraint =  iconLabel.pa_trailing.eq(paddingRight).install()
+    paddingRightConstraint =  iconLabel.pa_trailingMargin.eq(paddingRight).install()
   }
   
   open func setupAttrs(){

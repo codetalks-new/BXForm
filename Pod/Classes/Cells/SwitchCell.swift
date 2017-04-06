@@ -58,7 +58,7 @@ open class SwitchCell : StaticTableViewCell,BXBindable{
   
   func installConstaints(){
     toggleSwitch.pa_centerY.install()
-    toggleSwitch.pa_trailing.eq(15).install()
+    toggleSwitch.pa_trailingMargin.eq(FormMetrics.cellPaddingRight).install()
     
   }
   

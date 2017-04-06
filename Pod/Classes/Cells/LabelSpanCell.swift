@@ -104,10 +104,10 @@ open class LabelSpanCell : StaticTableViewCell{
    labelYConstraint =  labelLabel.pa_centerY.install()
    labelTopConstraint =  labelLabel.pa_top.eq(8).install()
     
-    paddingLeftConstraint =  labelLabel.pa_leading.eq(paddingLeft).install()
+    paddingLeftConstraint =  labelLabel.pa_leadingMargin.eq(paddingLeft).install()
     labelWidthConstraint = labelLabel.pa_width.eq(labelWidth).install()
     spanLabel.pa_centerY.install()
-    paddingRightConstraint =  spanLabel.pa_trailing.eq(paddingRight).install()
+    paddingRightConstraint =  spanLabel.pa_trailingMargin.eq(paddingRight).install()
     spanLabel.pa_after(labelLabel,offset:8).install()
   }
   

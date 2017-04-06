@@ -103,11 +103,11 @@ open class InputGroupView : UIView{
     if showSpanButton{
       textField.pa_before(spanButton, offset: 4).install()
       
-      spanButton.pa_trailing.eq(0).install()
+      spanButton.pa_trailingMargin.eq(0).install()
       spanButton.pac_vertical(0)
       spanButton.pa_width.eq(115).install()
     }else{
-      textField.pa_trailing.eq(15).install()
+      textField.pa_trailingMargin.eq(FormMetrics.cellPaddingLeft).install()
     }
     
   }

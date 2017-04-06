@@ -79,11 +79,11 @@ open class LabelStepperCell : StaticTableViewCell{
   
   open func installConstaints(){
     labelLabel.pa_centerY.install()
-    paddingLeftConstraint =  labelLabel.pa_leading.eq(paddingLeft).install()
+    paddingLeftConstraint =  labelLabel.pa_leadingMargin.eq(paddingLeft).install()
     labelWidthConstraint = labelLabel.pa_width.eq(labelWidth).install()
     
     stepper.pa_centerY.install()
-    paddingRightConstraint =  stepper.pa_trailing.eq(paddingRight).install()
+    paddingRightConstraint =  stepper.pa_trailingMargin.eq(paddingRight).install()
   }
   
   open func setupAttrs(){

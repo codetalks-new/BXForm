@@ -82,9 +82,9 @@ open class BasicTextInputCell : StaticTableViewCell{
   
   open func installConstaints(){
     labelLabel.pa_top.eq(11).install()
-    paddingLeftConstraint = labelLabel.pa_leading.eq(FormMetrics.cellPaddingLeft).install()
+    paddingLeftConstraint = labelLabel.pa_leadingMargin.eq(FormMetrics.cellPaddingLeft).install()
     
-    textView.pac_horizontal(FormMetrics.cellPaddingLeft)
+    textView.pac_horizontalMargin(FormMetrics.cellPaddingLeft)
     
     textBelowLabelConstraint =  textView.pa_below(labelLabel, offset: 8).install()
     textBelowLabelConstraint?.isActive = false
@@ -92,7 +92,7 @@ open class BasicTextInputCell : StaticTableViewCell{
     textTopConstraint?.isActive = false
     
     countLabel.pa_below(textView, offset: 8).install()
-    countLabel.pa_trailing.eq(15).install()
+    countLabel.pa_trailingMargin.eq(FormMetrics.cellPaddingRight).install()
     countLabel.pa_bottom.eq(10).install()
     
     textView.setContentHuggingPriority(200, for: .vertical)
