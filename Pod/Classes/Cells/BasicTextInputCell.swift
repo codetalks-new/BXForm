@@ -10,7 +10,6 @@ import UIKit
 import BXModel
 import BXiOSUtils
 import PinAuto
-import Cent
 
 
 open class BasicTextInputCell : StaticTableViewCell{
@@ -133,13 +132,13 @@ open class BasicTextInputCell : StaticTableViewCell{
       if inputText.isEmpty{
         countLabel.text = "最多\(inputMaxLength)字"
       }else{
-        self.countLabel.attributedText = self.createCountDownAttributedText(inputText.strip())
+        self.countLabel.attributedText = self.createCountDownAttributedText(inputText.trimmed())
       }
     }
   }
   
   func createCountDownAttributedText(_ text:String) -> NSAttributedString{
-    let count = text.strip().length
+    let count = text.trimmed().characters.count
     if count <= inputMaxLength{
       return NSAttributedString(string: "\(count)/\(inputMaxLength)")
     }else{

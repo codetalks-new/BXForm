@@ -65,10 +65,20 @@ public extension UIView{
     pa_leading.eq(offset).install()
     pa_trailing.eq(offset).install()
   }
+
+  public func pac_horizontalMargin(_ offset:CGFloat = 0){
+    pa_leadingMargin.eq(offset).install()
+    pa_trailingMargin.eq(offset).install()
+  }
   
   public func pac_vertical(_ offset:CGFloat = 0){
     pa_top.eq(offset).install()
     pa_bottom.eq(offset).install()
+  }
+  
+  public func pac_verticalMargin(_ offset:CGFloat = 0){
+    pa_topMargin.eq(offset).install()
+    pa_bottomMargin.eq(offset).install()
   }
   
 }

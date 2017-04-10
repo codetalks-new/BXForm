@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXForm"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "BXForm is a Collection of Custom UI Widget and Custom Controller, now support Swift 3"
 
 # This description is used to generate tags and improve search results.
@@ -38,8 +38,7 @@ BXForm is a Collection of Custom UI Widget and Custom Controller ,Based on BXMod
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'BXModel', '~>1.0'
-  s.dependency 'PinAuto', '~>2.0'
+  s.dependency 'PinAuto', '~>2.2'
   s.dependency 'BXiOSUtils', '~>1.0'
-  s.dependency 'Cent','~>6.0'
 
 end

@@ -251,6 +251,7 @@ open class LayoutConstraintParams{
       multiplier: multiplier,
       constant: finalConstanValue)
     constraint.identifier = identifier
+    constraint.priority = priority
     firstItem.translatesAutoresizingMaskIntoConstraints = false
     
     if let secondItem = secondItem{
